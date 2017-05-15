@@ -4,10 +4,21 @@
 
 const term = {
   // get the path (admChannel or pageUrl) to check
-  getPath2Check(type) {
-    if (typeof (_ADM_Channel) !== 'undefined' && _ADM_Channel !== '') { // eslint-disable-line no-undef,camelcase
-      return decodeURIComponent(_ADM_Channel); // eslint-disable-line no-undef,camelcase
+  getPath2Check(type, variableName) {
+    const globalVariable = eval(`typeof (${variableName}) !== 'undefined' && ${variableName} !== ''`) ? eval(variableName) : undefined; // eslint-disable-line no-eval
+    if (typeof (globalVariable) !== 'undefined' && globalVariable !== '') { // eslint-disable-line no-undef,camelcase
+      return decodeURIComponent(`${globalVariable}`); // eslint-disable-line no-undef,camelcase
     }
+    const url = document.URL;
+    const ref = document.referrer;
+    let http = (type === 'Site:Pageurl') ? url.replace(/\?i=([0-9]+)&bz=([0-9]+)&z=([0-9]+)#([0-9_0-9]+)/g, '') : ref.replace(/\?i=([0-9]+)&bz=([0-9]+)&z=([0-9]+)#([0-9_0-9]+)/g, '');
+    const arrUrlReg = http.match(/([^|]+)/i);
+    if (arrUrlReg) {
+      http = `${arrUrlReg[0]}`;
+    }
+    return http.toLowerCase();
+  },
+  getCurrentDomain(type) {
     const url = document.URL;
     const ref = document.referrer;
     let http = (type === 'Site:Pageurl') ? url.replace(/\?i=([0-9]+)&bz=([0-9]+)&z=([0-9]+)#([0-9_0-9]+)/g, '') : ref.replace(/\?i=([0-9]+)&bz=([0-9]+)&z=([0-9]+)#([0-9_0-9]+)/g, '');
@@ -26,9 +37,9 @@ const term = {
       case '!=':
         return (path2check !== data);
       case '=~':
-        return this.stripos(path2check, data, 0);
+        return this.stringPosition(path2check, data, 0);
       case '!~':
-        return !this.stripos(path2check, data, 0);
+        return !this.stringPosition(path2check, data, 0);
       case '=x': {
         const reg = new RegExp(data);
         return reg.test(path2check);
@@ -65,7 +76,7 @@ const term = {
     return false;
   },
 
-  stripos(path, data, offset) {
+  stringPosition(path, data, offset) {
     const haystack = (`${path}`).toLowerCase();
     const needle = (`${data}`).toLowerCase();
     return haystack.indexOf(needle, offset) !== -1;

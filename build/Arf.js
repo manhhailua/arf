@@ -103,13 +103,53 @@ if(typeof __g == 'number')__g = global; // eslint-disable-line no-undef
 /* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.util = exports.screen = exports.term = exports.adsStorage = undefined;
+
+var _adsStorage = __webpack_require__(65);
+
+var _adsStorage2 = _interopRequireDefault(_adsStorage);
+
+var _term = __webpack_require__(67);
+
+var _term2 = _interopRequireDefault(_term);
+
+var _screen = __webpack_require__(66);
+
+var _screen2 = _interopRequireDefault(_screen);
+
+var _util = __webpack_require__(68);
+
+var _util2 = _interopRequireDefault(_util);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/**
+ * Created by tlm on 06/03/2017.
+ */
+
+exports.adsStorage = _adsStorage2.default;
+exports.term = _term2.default;
+exports.screen = _screen2.default;
+exports.util = _util2.default;
+exports.default = { adsStorage: _adsStorage2.default, term: _term2.default, screen: _screen2.default, util: _util2.default };
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
 // Thank's IE8 for his funny defineProperty
-module.exports = !__webpack_require__(13)(function(){
+module.exports = !__webpack_require__(15)(function(){
   return Object.defineProperty({}, 'a', {get: function(){ return 7; }}).a != 7;
 });
 
 /***/ }),
-/* 3 */
+/* 4 */
 /***/ (function(module, exports) {
 
 var hasOwnProperty = {}.hasOwnProperty;
@@ -118,15 +158,15 @@ module.exports = function(it, key){
 };
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var anObject       = __webpack_require__(12)
+var anObject       = __webpack_require__(14)
   , IE8_DOM_DEFINE = __webpack_require__(47)
   , toPrimitive    = __webpack_require__(38)
   , dP             = Object.defineProperty;
 
-exports.f = __webpack_require__(2) ? Object.defineProperty : function defineProperty(O, P, Attributes){
+exports.f = __webpack_require__(3) ? Object.defineProperty : function defineProperty(O, P, Attributes){
   anObject(O);
   P = toPrimitive(P, true);
   anObject(Attributes);
@@ -139,7 +179,7 @@ exports.f = __webpack_require__(2) ? Object.defineProperty : function defineProp
 };
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // to indexed object, toObject with fallback for non-array-like ES3 strings
@@ -150,7 +190,7 @@ module.exports = function(it){
 };
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9788,7 +9828,7 @@ module.exports = Vue$3;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(112)))
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9815,13 +9855,13 @@ exports.default = typeof _symbol2.default === "function" && _typeof(_iterator2.d
 };
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var global    = __webpack_require__(1)
   , core      = __webpack_require__(0)
   , ctx       = __webpack_require__(45)
-  , hide      = __webpack_require__(9)
+  , hide      = __webpack_require__(10)
   , PROTOTYPE = 'prototype';
 
 var $export = function(type, name, source){
@@ -9881,12 +9921,12 @@ $export.R = 128; // real proto method for `library`
 module.exports = $export;
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var dP         = __webpack_require__(4)
+var dP         = __webpack_require__(5)
   , createDesc = __webpack_require__(25);
-module.exports = __webpack_require__(2) ? function(object, key, value){
+module.exports = __webpack_require__(3) ? function(object, key, value){
   return dP.f(object, key, createDesc(1, value));
 } : function(object, key, value){
   object[key] = value;
@@ -9894,7 +9934,7 @@ module.exports = __webpack_require__(2) ? function(object, key, value){
 };
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var store      = __webpack_require__(35)('wks')
@@ -9910,166 +9950,7 @@ var $exports = module.exports = function(name){
 $exports.store = store;
 
 /***/ }),
-/* 11 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-exports.__esModule = true;
-
-exports.default = function (instance, Constructor) {
-  if (!(instance instanceof Constructor)) {
-    throw new TypeError("Cannot call a class as a function");
-  }
-};
-
-/***/ }),
 /* 12 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var isObject = __webpack_require__(14);
-module.exports = function(it){
-  if(!isObject(it))throw TypeError(it + ' is not an object!');
-  return it;
-};
-
-/***/ }),
-/* 13 */
-/***/ (function(module, exports) {
-
-module.exports = function(exec){
-  try {
-    return !!exec();
-  } catch(e){
-    return true;
-  }
-};
-
-/***/ }),
-/* 14 */
-/***/ (function(module, exports) {
-
-module.exports = function(it){
-  return typeof it === 'object' ? it !== null : typeof it === 'function';
-};
-
-/***/ }),
-/* 15 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// 19.1.2.14 / 15.2.3.14 Object.keys(O)
-var $keys       = __webpack_require__(53)
-  , enumBugKeys = __webpack_require__(28);
-
-module.exports = Object.keys || function keys(O){
-  return $keys(O, enumBugKeys);
-};
-
-/***/ }),
-/* 16 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Zone = exports.Share = exports.Placement = exports.Banner = undefined;
-
-var _Banner2 = __webpack_require__(57);
-
-var _Banner3 = _interopRequireDefault(_Banner2);
-
-var _Placement2 = __webpack_require__(58);
-
-var _Placement3 = _interopRequireDefault(_Placement2);
-
-var _Share2 = __webpack_require__(59);
-
-var _Share3 = _interopRequireDefault(_Share2);
-
-var _Zone2 = __webpack_require__(60);
-
-var _Zone3 = _interopRequireDefault(_Zone2);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.Banner = _Banner3.default; /**
-                                    * Created by Manhhailua on 11/23/16.
-                                    */
-
-exports.Placement = _Placement3.default;
-exports.Share = _Share3.default;
-exports.Zone = _Zone3.default;
-
-/***/ }),
-/* 17 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.adsData = exports.dom = undefined;
-
-var _dom2 = __webpack_require__(63);
-
-var _dom3 = _interopRequireDefault(_dom2);
-
-var _adsData2 = __webpack_require__(62);
-
-var _adsData3 = _interopRequireDefault(_adsData2);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.dom = _dom3.default; /**
-                              * Created by manhhailua on 1/17/17.
-                              */
-
-exports.adsData = _adsData3.default;
-
-/***/ }),
-/* 18 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _classCallCheck2 = __webpack_require__(11);
-
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/**
- * Created by Manhhailua on 11/30/16.
- */
-
-var Entity = function Entity(entity) {
-  (0, _classCallCheck3.default)(this, Entity);
-
-  this.id = entity.id;
-  this.weight = entity.weight;
-  this.type = entity.type;
-  this.width = entity.width;
-  this.height = entity.height;
-  this.html = entity.html;
-  this.css = entity.outputCss;
-  this.cpm = entity.cpm;
-};
-
-exports.default = Entity;
-
-/***/ }),
-/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10107,6 +9988,129 @@ exports.Placement = _Placement3.default;
 exports.Banner = _Banner3.default;
 
 /***/ }),
+/* 13 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+exports.__esModule = true;
+
+exports.default = function (instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+};
+
+/***/ }),
+/* 14 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var isObject = __webpack_require__(16);
+module.exports = function(it){
+  if(!isObject(it))throw TypeError(it + ' is not an object!');
+  return it;
+};
+
+/***/ }),
+/* 15 */
+/***/ (function(module, exports) {
+
+module.exports = function(exec){
+  try {
+    return !!exec();
+  } catch(e){
+    return true;
+  }
+};
+
+/***/ }),
+/* 16 */
+/***/ (function(module, exports) {
+
+module.exports = function(it){
+  return typeof it === 'object' ? it !== null : typeof it === 'function';
+};
+
+/***/ }),
+/* 17 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// 19.1.2.14 / 15.2.3.14 Object.keys(O)
+var $keys       = __webpack_require__(53)
+  , enumBugKeys = __webpack_require__(28);
+
+module.exports = Object.keys || function keys(O){
+  return $keys(O, enumBugKeys);
+};
+
+/***/ }),
+/* 18 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Zone = exports.Share = exports.Placement = exports.Banner = undefined;
+
+var _Banner2 = __webpack_require__(57);
+
+var _Banner3 = _interopRequireDefault(_Banner2);
+
+var _Placement2 = __webpack_require__(58);
+
+var _Placement3 = _interopRequireDefault(_Placement2);
+
+var _Share2 = __webpack_require__(59);
+
+var _Share3 = _interopRequireDefault(_Share2);
+
+var _Zone2 = __webpack_require__(60);
+
+var _Zone3 = _interopRequireDefault(_Zone2);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.Banner = _Banner3.default; /**
+                                    * Created by Manhhailua on 11/23/16.
+                                    */
+
+exports.Placement = _Placement3.default;
+exports.Share = _Share3.default;
+exports.Zone = _Zone3.default;
+
+/***/ }),
+/* 19 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.adsData = exports.dom = undefined;
+
+var _dom2 = __webpack_require__(63);
+
+var _dom3 = _interopRequireDefault(_dom2);
+
+var _adsData2 = __webpack_require__(62);
+
+var _adsData3 = _interopRequireDefault(_adsData2);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.dom = _dom3.default; /**
+                              * Created by manhhailua on 1/17/17.
+                              */
+
+exports.adsData = _adsData3.default;
+
+/***/ }),
 /* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10116,35 +10120,33 @@ exports.Banner = _Banner3.default;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.util = exports.screen = exports.term = exports.adsStorage = undefined;
 
-var _adsStorage = __webpack_require__(65);
+var _classCallCheck2 = __webpack_require__(13);
 
-var _adsStorage2 = _interopRequireDefault(_adsStorage);
-
-var _term = __webpack_require__(67);
-
-var _term2 = _interopRequireDefault(_term);
-
-var _screen = __webpack_require__(66);
-
-var _screen2 = _interopRequireDefault(_screen);
-
-var _util = __webpack_require__(68);
-
-var _util2 = _interopRequireDefault(_util);
+var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /**
- * Created by tlm on 06/03/2017.
+ * Created by Manhhailua on 11/30/16.
  */
 
-exports.adsStorage = _adsStorage2.default;
-exports.term = _term2.default;
-exports.screen = _screen2.default;
-exports.util = _util2.default;
-exports.default = { adsStorage: _adsStorage2.default, term: _term2.default, screen: _screen2.default, util: _util2.default };
+var Entity = function Entity(entity) {
+  (0, _classCallCheck3.default)(this, Entity);
+
+  this.id = entity.id;
+  this.weight = entity.weight;
+  this.type = entity.type;
+  this.width = entity.width;
+  this.height = entity.height;
+  this.html = entity.html;
+  this.script = entity.script;
+  this.image = entity.image;
+  this.css = entity.outputCss;
+  this.cpm = entity.cpm;
+};
+
+exports.default = Entity;
 
 /***/ }),
 /* 21 */
@@ -10202,7 +10204,7 @@ var _create = __webpack_require__(69);
 
 var _create2 = _interopRequireDefault(_create);
 
-var _typeof2 = __webpack_require__(7);
+var _typeof2 = __webpack_require__(8);
 
 var _typeof3 = _interopRequireDefault(_typeof2);
 
@@ -10233,7 +10235,7 @@ exports.default = function (subClass, superClass) {
 
 exports.__esModule = true;
 
-var _typeof2 = __webpack_require__(7);
+var _typeof2 = __webpack_require__(8);
 
 var _typeof3 = _interopRequireDefault(_typeof2);
 
@@ -10306,7 +10308,7 @@ module.exports = true;
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
-var anObject    = __webpack_require__(12)
+var anObject    = __webpack_require__(14)
   , dPs         = __webpack_require__(94)
   , enumBugKeys = __webpack_require__(28)
   , IE_PROTO    = __webpack_require__(34)('IE_PROTO')
@@ -10358,9 +10360,9 @@ exports.f = {}.propertyIsEnumerable;
 /* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var def = __webpack_require__(4).f
-  , has = __webpack_require__(3)
-  , TAG = __webpack_require__(10)('toStringTag');
+var def = __webpack_require__(5).f
+  , has = __webpack_require__(4)
+  , TAG = __webpack_require__(11)('toStringTag');
 
 module.exports = function(it, tag, stat){
   if(it && !has(it = stat ? it : it.prototype, TAG))def(it, TAG, {configurable: true, value: tag});
@@ -10413,7 +10415,7 @@ module.exports = function(it){
 /***/ (function(module, exports, __webpack_require__) {
 
 // 7.1.1 ToPrimitive(input [, PreferredType])
-var isObject = __webpack_require__(14);
+var isObject = __webpack_require__(16);
 // instead of the ES6 spec version, we didn't implement @@toPrimitive case
 // and the second argument - flag - preferred type is a string
 module.exports = function(it, S){
@@ -10433,7 +10435,7 @@ var global         = __webpack_require__(1)
   , core           = __webpack_require__(0)
   , LIBRARY        = __webpack_require__(30)
   , wksExt         = __webpack_require__(40)
-  , defineProperty = __webpack_require__(4).f;
+  , defineProperty = __webpack_require__(5).f;
 module.exports = function(name){
   var $Symbol = core.Symbol || (core.Symbol = LIBRARY ? {} : global.Symbol || {});
   if(name.charAt(0) != '_' && !(name in $Symbol))defineProperty($Symbol, name, {value: wksExt.f(name)});
@@ -10443,7 +10445,7 @@ module.exports = function(name){
 /* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports.f = __webpack_require__(10);
+exports.f = __webpack_require__(11);
 
 /***/ }),
 /* 41 */
@@ -10460,7 +10462,7 @@ var _getPrototypeOf = __webpack_require__(21);
 
 var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
 
-var _classCallCheck2 = __webpack_require__(11);
+var _classCallCheck2 = __webpack_require__(13);
 
 var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
 
@@ -10476,11 +10478,11 @@ var _inherits2 = __webpack_require__(23);
 
 var _inherits3 = _interopRequireDefault(_inherits2);
 
-var _Entity2 = __webpack_require__(18);
+var _Entity2 = __webpack_require__(20);
 
 var _Entity3 = _interopRequireDefault(_Entity2);
 
-var _vendor = __webpack_require__(20);
+var _vendor = __webpack_require__(2);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -10497,14 +10499,21 @@ var Banner = function (_Entity) {
     var _this = (0, _possibleConstructorReturn3.default)(this, (Banner.__proto__ || (0, _getPrototypeOf2.default)(Banner)).call(this, banner));
 
     _this.id = 'banner-' + banner.id;
-    _this.relative = banner.relative;
+    _this.isRelative = banner.isRelative;
+    _this.keyword = banner.keyword;
     _this.terms = banner.terms;
     _this.location = banner.location;
     _this.fr = banner.fr;
     _this.channel = banner.channel;
+    _this.bannerType = banner.bannerType;
+    _this.test = banner.test;
+    _this.bannerType = banner.bannerType;
+    _this.dataBannerHtml = banner.dataBannerHtml;
+    _this.linkFormatBannerHtml = banner.linkFormatBannerHtml;
+    _this.isIFrame = banner.isIFrame;
+    _this.imageUrl = banner.imageUrl;
     return _this;
   }
-
   // Banner Checking Process
 
 
@@ -10514,23 +10523,24 @@ var Banner = function (_Entity) {
       var isBannerAvailable = this.id !== 'banner-undefined';
       var isFitChannel = this.checkChannel;
       var isFitLocation = this.checkLocation;
-      var res = isBannerAvailable && isFitChannel && isFitLocation;
-      // console.log(`${this.id}: ${this.getFrequency()}`);
+      var a = this.checkFrequency;
+      var res = isBannerAvailable && isFitChannel && isFitLocation && a;
+      console.log(this.id + ': fre:' + a + ', channel: ' + isFitChannel + ', location: ' + isFitLocation + ', isBannerAvailable: ' + isBannerAvailable);
       return res;
     }
-
     // check term old data (not use)
 
   }, {
     key: 'countFrequency',
     value: function countFrequency() {
+      var domain = _vendor.term.getCurrentDomain('Site:Pageurl');
       var bannerID = this.id;
       var cookie = _vendor.adsStorage.getStorage('_fr');
       var checkCookie = _vendor.adsStorage.subCookie(cookie, 'Ver:', 0);
       if (checkCookie === '') {
         cookie = 'Ver:25;';
       }
-      _vendor.adsStorage.setStorage('_fr', cookie, '', '/');
+      _vendor.adsStorage.setStorage('_fr', cookie, '', '/', domain);
       if (('' + cookie).indexOf(bannerID) !== -1) {
         var FrequencyStr = _vendor.adsStorage.subCookie(cookie, bannerID + ':', 0).toString();
         var currentCount = this.getFrequency();
@@ -10540,9 +10550,9 @@ var Banner = function (_Entity) {
         }
       } else {
         cookie = bannerID === 'banner-undefined' ? cookie : cookie + ';' + bannerID + ':1;';
-        // console.log(adsStorage.subCookie(cookie, `${bannerID}:`, 0).toString());
+        console.log(_vendor.adsStorage.subCookie(cookie, bannerID + ':', 0).toString());
       }
-      _vendor.adsStorage.setStorage('_fr', cookie, '', '/');
+      _vendor.adsStorage.setStorage('_fr', cookie, '', '/', domain);
     }
   }, {
     key: 'getFrequency',
@@ -10556,19 +10566,6 @@ var Banner = function (_Entity) {
       }
       return '';
     }
-
-    // get checkScreen() {
-    //
-    // }
-    //
-    // get checkMoile() {
-    //
-    // }
-    //
-    // get checkRelative() {
-    //
-    // }
-
   }, {
     key: 'checkTerm',
     get: function get() {
@@ -10593,31 +10590,36 @@ var Banner = function (_Entity) {
 
       return true;
     }
-
     // check channel with new data (using)
 
   }, {
     key: 'checkChannel',
     get: function get() {
-      if (this.channel) {
+      if (this.channel !== undefined && this.channel !== null && this.channel !== '') {
         var channel = this.channel;
         var options = channel.options.filter(function (item) {
-          return item.name !== 'Location';
+          return item.name !== 'Location' && item.name !== 'Browser';
         });
-        var optionslen = options.length;
+        var optionsLength = options.length;
         var a = eval; // eslint-disable-line no-eval
         var strChk = '';
 
         var _loop = function _loop(i) {
           var optionChannelType = options[i].optionChannelType;
+          var value = options[i].value.toString().split(',');
+          var comparison = options[i].comparison;
+          var logical = options[i].logical === 'and' ? '&&' : '||';
+          var globalVariableName = options[i].globalVariables;
+          var globalVariable = a('typeof (' + globalVariableName + ') !== \'undefined\' && ' + globalVariableName + ' !== \'\'') ? a(globalVariableName) : undefined;
+          var globalVariableTemp = typeof globalVariable !== 'undefined' && globalVariable !== '' ? globalVariable : ''; // eslint-disable-line
+          var currentAdditionalDetail = '';
           var type = optionChannelType.isInputLink ? 'isInputLink' : '';
+          var stringCheck = '';
+          var additionalDetail = []; // get optionChannelValueProperties
           type = optionChannelType.isSelectOption ? 'isSelectOption' : type;
           type = optionChannelType.isVariable ? 'isVariable' : type;
-          var value = options[i].value.toString().split(',');
-          // console.log('valueCheck', value);
 
-          // get optionChannelValueProperties
-          var additionalDetail = [];
+          // console.log('valueCheck', value);
           if (optionChannelType.optionChannelValues.length > 0) {
             additionalDetail = optionChannelType.optionChannelValues.filter(function (item) {
               return value.reduce(function (acc, valueItem) {
@@ -10625,59 +10627,43 @@ var Banner = function (_Entity) {
               }, 0);
             });
           }
-
-          var logical = options[i].logical === 'and' ? '&&' : '||';
-          var comparison = options[i].comparison;
-          var stringCheck = '';
-          var _ADM_Channel_temp = typeof _ADM_Channel !== 'undefined' && _ADM_Channel !== '' ? _ADM_Channel : ''; // eslint-disable-line
-          // let currentAdditionalDetail = '';
           // console.log('value', value);
           for (var j = 0; j < value.length; j += 1) {
             if (j > 0) stringCheck += '||';
             switch (type) {
               case 'isInputLink' || 'isVariable':
                 {
-                  if (typeof _ADM_Channel !== 'undefined' && _ADM_Channel !== '') {
+                  if (typeof globalVariable !== 'undefined' && globalVariable !== '') {
                     // eslint-disable-line
-                    _ADM_Channel = ''; // eslint-disable-line
+                    a(globalVariableName + ' = \'\''); // eslint-disable-line
                   }
-                  // console.log('checkChannel', type, term.getPath2Check('Site:Pageurl'),
-                  // comparison, value[j]);
+                  // eslint-disable-next-line
+                  // console.log('checkChannel', type, term.getPath2Check('Site:Pageurl'),comparison, value[j]);
                   stringCheck += _vendor.term.checkPathLogic(value[j], 'Site:Pageurl', comparison);
-                  if (typeof _ADM_Channel !== 'undefined' && _ADM_Channel !== '') {
+                  if (typeof globalVariable !== 'undefined' && globalVariable !== '') {
                     // eslint-disable-line
-                    _ADM_Channel = _ADM_Channel_temp; // eslint-disable-line
+                    a(globalVariableName + ' = globalVariableTemp'); // eslint-disable-line
                   }
                   break;
                 }
               case 'isSelectOption':
                 {
-                  var getThisChannel = function getThisChannel() {
-                    var path = _vendor.term.getPath2Check('Site:Pageurl');
-                    var Channel = void 0;
-                    if (path.indexOf('http://') !== -1) {
-                      Channel = path.substring(7).split('/');
-                      Channel.shift();
-                    } else {
-                      Channel = path.split('/');
-                      Channel.shift();
-                      Channel.pop();
-                    }
-                    return Channel;
-                  };
-                  var thisChannel = getThisChannel();
+                  var Pageurl = _vendor.term.getPath2Check('Site:Pageurl', globalVariableName);
+                  var thisChannel = _vendor.util.getThisChannel(Pageurl);
+                  thisChannel.shift();
 
                   // do smt with additionalDetail
                   if (additionalDetail.length > 0) {
                     // region : get link detail
-                    if (typeof _ADM_Channel !== 'undefined' && _ADM_Channel !== '') {
+                    if (typeof globalVariable !== 'undefined' && globalVariable !== '') {
                       // eslint-disable-line
-                      _ADM_Channel = ''; // eslint-disable-line
+                      a(globalVariableName + ' = \'\'');
                     }
-                    // currentAdditionalDetail = getThisChannel().pop();
-                    if (typeof _ADM_Channel !== 'undefined' && _ADM_Channel !== '') {
+                    currentAdditionalDetail = _vendor.util.getThisChannel(Pageurl).pop();
+                    currentAdditionalDetail.shift();
+                    if (typeof globalVariable !== 'undefined' && globalVariable !== '') {
                       // eslint-disable-line
-                      _ADM_Channel = _ADM_Channel_temp; // eslint-disable-line
+                      a(globalVariableName + ' = globalVariableTemp');
                     }
                     // endregion : get link detail
 
@@ -10707,15 +10693,14 @@ var Banner = function (_Entity) {
           strChk += CheckValue;
         };
 
-        for (var i = 0; i < optionslen; i += 1) {
+        for (var i = 0; i < optionsLength; i += 1) {
           _loop(i);
         }
-        // console.log('checkChannel', strChk);
+        console.log('checkChannel', strChk);
         return a(strChk);
       }
       return true;
     }
-
     // get CheckLocation() {
     //   let location = this.location;
     //   location = (typeof (location) === 'undefined' ||
@@ -10740,42 +10725,46 @@ var Banner = function (_Entity) {
     key: 'checkLocation',
     get: function get() {
       var location = this.getLocation;
-      location = typeof location === 'undefined' || location === undefined || location == null ? 0 : location;
-      var strlocation = '' + _vendor.util.convertLocation(window.ADSData.ADSLocation).R;
-      var strcity = '' + _vendor.util.convertLocation(window.ADSData.ADSCity).RC;
-      var strcitymain = '' + _vendor.util.convertLocation(window.ADSData.ADSCityMain).RC;
-      // console.log(`Check Location ${strcity} isBelongTo ${location.location}`);
-      return !!(location === '0' || ('' + location.location).indexOf(strcity) !== -1 && location.comparison === '==' || ('' + location.location).indexOf(strcitymain) !== -1 && location.comparison === '==' || ('' + location.location).indexOf(strlocation) !== -1 && location.comparison === '==');
+      if (location !== undefined && location !== 0) {
+        location = typeof location === 'undefined' || location === undefined || location == null ? 0 : location;
+        var strlocation = '' + _vendor.util.convertLocation(window.ADSData.ADSLocation).R;
+        var strcity = '' + _vendor.util.convertLocation(window.ADSData.ADSCity).RC;
+        var strcitymain = '' + _vendor.util.convertLocation(window.ADSData.ADSCityMain).RC;
+        console.log('Check Location ' + strcity + ' isBelongTo ' + location.location);
+        return !!(location === '0' || ('' + location.location).indexOf(strcity) !== -1 && location.comparison === '==' || ('' + location.location).indexOf(strcitymain) !== -1 && location.comparison === '==' || ('' + location.location).indexOf(strlocation) !== -1 && location.comparison === '==');
+      }
+      return true;
     }
-
     // get location from channel's options
 
   }, {
     key: 'getLocation',
     get: function get() {
-      // console.log('getLocation run');
-      var onlocations = this.channel.options.filter(function (item) {
-        return item.name === 'Location' && item.comparison === '==';
-      });
-      if (onlocations.length > 0) {
+      if (this.channel !== undefined && this.channel !== null && this.channel !== '') {
+        // console.log('getLocation run');
+        var onLocations = this.channel.options.filter(function (item) {
+          return item.name === 'Location' && item.comparison === '==';
+        });
+        var exceptLocation = this.channel.options.filter(function (item) {
+          return item.name === 'Location' && item.comparison === '!=';
+        });
+        if (onLocations.length > 0) {
+          return {
+            location: onLocations.reduce(function (acc, item, index) {
+              return (index > 0 ? acc + ',' : '') + item.value;
+            }, 0),
+            comparison: '=='
+          };
+        }
         return {
-          location: onlocations.reduce(function (acc, item, index) {
+          location: exceptLocation.reduce(function (acc, item, index) {
             return (index > 0 ? acc + ',' : '') + item.value;
           }, 0),
-          comparison: '=='
+          comparison: '!='
         };
       }
-      var exceptLocation = this.channel.options.filter(function (item) {
-        return item.name === 'Location' && item.comparison === '!=';
-      });
-      return {
-        location: exceptLocation.reduce(function (acc, item, index) {
-          return (index > 0 ? acc + ',' : '') + item.value;
-        }, 0),
-        comparison: '!='
-      };
+      return 0;
     }
-
     // old data(not use)
 
   }, {
@@ -10784,36 +10773,19 @@ var Banner = function (_Entity) {
       var browser = this.browser;
       browser = typeof browser === 'undefined' || browser === 'undefined' || browser == null || browser === '' ? 0 : browser;
       browser = (',' + browser + ',').toLowerCase();
-      var ua = navigator.userAgent;
-      var tem = void 0;
-      var M = ua.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || [];
-      if (/trident/i.test(M[1])) {
-        tem = /\brv[ :]+(\d+)/g.exec(ua) || [];
-        return 'IE ' + (tem[1] || '');
-      }
-      if (M[1] === 'Chrome') {
-        tem = ua.match(/\b(OPR|Edge)\/(\d+)/);
-        if (tem != null) return tem.slice(1).join(' ').replace('OPR', 'Opera');
-      }
-      M = M[2] ? [M[1], M[2]] : [navigator.appName, navigator.appVersion, '-?'];
-      tem = ua.match(/version\/(\d+)/i);
-      if (tem != null) {
-        M.splice(1, 1, tem[1]);
-      }
-      var currentBrowser = M.join(' ').substring(0, M.join(' ').indexOf(' ')).toLowerCase();
-      return browser !== ',,' && browser !== ',0,' ? ('' + browser).indexOf(currentBrowser) !== -1 : true;
+      return browser !== ',,' && browser !== ',0,' ? ('' + browser).indexOf(_vendor.util.getCurrentBrowser) !== -1 : true;
     }
   }, {
     key: 'checkFrequency',
     get: function get() {
       var fr = this.fr;
+      var count = this.getFrequency();
       if (fr === '' || fr === 'undefined' || fr === undefined) {
         return true;
       }
       fr = parseInt(fr, 10);
-      var count = this.getFrequency();
       if (count > fr) {
-        // // console.log(`${this.id}: `, this.getFrequency());
+        console.log(this.id + ': ', this.getFrequency());
         return false;
       }
       return true;
@@ -10835,7 +10807,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _typeof2 = __webpack_require__(7);
+var _typeof2 = __webpack_require__(8);
 
 var _typeof3 = _interopRequireDefault(_typeof2);
 
@@ -10843,7 +10815,7 @@ var _getPrototypeOf = __webpack_require__(21);
 
 var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
 
-var _classCallCheck2 = __webpack_require__(11);
+var _classCallCheck2 = __webpack_require__(13);
 
 var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
 
@@ -10859,7 +10831,7 @@ var _inherits2 = __webpack_require__(23);
 
 var _inherits3 = _interopRequireDefault(_inherits2);
 
-var _Entity2 = __webpack_require__(18);
+var _Entity2 = __webpack_require__(20);
 
 var _Entity3 = _interopRequireDefault(_Entity2);
 
@@ -10867,7 +10839,7 @@ var _Banner = __webpack_require__(41);
 
 var _Banner2 = _interopRequireDefault(_Banner);
 
-var _vendor = __webpack_require__(20);
+var _vendor = __webpack_require__(2);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -10881,20 +10853,43 @@ var Placement = function (_Entity) {
 
     _this.id = 'placement-' + placement.id;
     _this.banners = placement.banners;
+    _this.revenueType = placement.revenueType;
+    _this.cpdPercent = placement.cpdPercent;
     _this.pr = placement.pr;
     _this.cpd = placement.cpd;
     _this.cpm = placement.cpm;
     _this.campaign = placement.campaign;
+    _this.positionOnShare = placement.positionOnShare;
     return _this;
   }
 
   (0, _createClass3.default)(Placement, [{
     key: 'filterBanner',
     value: function filterBanner() {
-      return this.allBanners.filter(function (x) {
+      var result = this.allBanners.filter(function (x) {
         return x.isRenderable();
       });
+      var arrayKeyword = window.ZoneConnect.relativeKeyword.split(',').map(function (item) {
+        return item.replace(' ', '');
+      });
+      if (arrayKeyword.length > 0) {
+        var filterBannerWithKeyword = result.filter(function (banner) {
+          return banner.keyword.split(',').map(function (item) {
+            return item.replace(' ', '');
+          }).filter(function (item) {
+            return arrayKeyword.indexOf(item) !== -1;
+          }).length > 0;
+        });
+        if (filterBannerWithKeyword.length > 0) {
+          result = filterBannerWithKeyword;
+        }
+      }
+      if (result.length === 0) {
+        return this.allBanners;
+      }
+      return result;
     }
+
     /**
      * Get active banner by its weight
      * @returns {Banner}
@@ -10903,20 +10898,34 @@ var Placement = function (_Entity) {
   }, {
     key: 'activeBanner',
     value: function activeBanner() {
-      if (this.filterBanner().length > 0) {
-        var _randomNumber = Math.random() * 100;
-        var _ratio = this.filterBanner().reduce(function (tmp, banner) {
+      var allBanner = this.filterBanner();
+      if (allBanner.length > 0) {
+        var isExitsWeight = allBanner.reduce(function (acc, banner, index) {
+          if (index === 0) {
+            return banner.weight > 0;
+          }
+          return acc && banner.weight > 0;
+        }, 0);
+        console.log('isExitsWeight', isExitsWeight);
+        if (!isExitsWeight) {
+          var weight = 100 / allBanner.length;
+          allBanner.reduce(function (acc, banner) {
+            return banner.weight = weight;
+          }, 0); // eslint-disable-line
+        }
+        var randomNumber = Math.random() * 100;
+        var ratio = allBanner.reduce(function (tmp, banner) {
           return tmp + banner.weight;
         }, 0) / 100;
 
-        return this.filterBanner().reduce(function (range, banner) {
-          var nextRange = range + banner.weight / _ratio;
+        return allBanner.reduce(function (range, banner) {
+          var nextRange = range + banner.weight / ratio;
 
           if ((typeof range === 'undefined' ? 'undefined' : (0, _typeof3.default)(range)) === 'object') {
             return range;
           }
 
-          if (_randomNumber >= range && _randomNumber < nextRange) {
+          if (randomNumber >= range && randomNumber < nextRange) {
             return banner;
           }
 
@@ -10925,25 +10934,7 @@ var Placement = function (_Entity) {
       }
 
       // default banner here
-      // // console.log(`place none banner: ${this.id} `);
-      var randomNumber = Math.random() * 100;
-      var ratio = this.allBanners.reduce(function (tmp, banner) {
-        return (tmp + banner.weight) / 100;
-      }, 0);
-
-      return this.allBanners.reduce(function (range, banner) {
-        var nextRange = range + banner.weight / ratio;
-
-        if ((typeof range === 'undefined' ? 'undefined' : (0, _typeof3.default)(range)) === 'object') {
-          return range;
-        }
-
-        if (randomNumber >= range && randomNumber < nextRange) {
-          return banner;
-        }
-
-        return nextRange;
-      }, 0);
+      return _vendor.util.getDefaultBanner(this.width, this.height);
     }
   }, {
     key: 'PlacementArea',
@@ -10966,14 +10957,14 @@ var Placement = function (_Entity) {
   }, {
     key: 'AdsType',
     get: function get() {
-      if (this.pr !== undefined && this.pr === 1) {
-        return 'pr';
-      }
-      if (this.cpd !== undefined && this.cpd === 1) {
-        return 'cpd';
-      }
-      if (this.cpm !== undefined && this.cpm === 1) {
-        return 'cpm';
+      if (this.revenueType !== undefined) {
+        if (this.revenueType === 'cpd') {
+          return {
+            revenueType: this.revenueType,
+            cpdPercent: this.cpdPercent === 0 ? 1 / 3 : this.cpdPercent
+          };
+        }
+        return { revenueType: this.revenueType };
       }
       return '';
     }
@@ -11004,7 +10995,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _typeof2 = __webpack_require__(7);
+var _typeof2 = __webpack_require__(8);
 
 var _typeof3 = _interopRequireDefault(_typeof2);
 
@@ -11012,7 +11003,7 @@ var _getPrototypeOf = __webpack_require__(21);
 
 var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
 
-var _classCallCheck2 = __webpack_require__(11);
+var _classCallCheck2 = __webpack_require__(13);
 
 var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
 
@@ -11028,7 +11019,7 @@ var _inherits2 = __webpack_require__(23);
 
 var _inherits3 = _interopRequireDefault(_inherits2);
 
-var _Entity2 = __webpack_require__(18);
+var _Entity2 = __webpack_require__(20);
 
 var _Entity3 = _interopRequireDefault(_Entity2);
 
@@ -11036,11 +11027,9 @@ var _Placement = __webpack_require__(42);
 
 var _Placement2 = _interopRequireDefault(_Placement);
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _vendor = __webpack_require__(2);
 
-/**
- * Created by Manhhailua on 12/5/16.
- */
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Share = function (_Entity) {
   (0, _inherits3.default)(Share, _Entity);
@@ -11054,12 +11043,6 @@ var Share = function (_Entity) {
     _this.placements = share.placements;
     return _this;
   }
-
-  /**
-   * Get all placements from this share
-   * @returns [Placement]
-   */
-
 
   (0, _createClass3.default)(Share, [{
     key: 'activePlacement',
@@ -11102,15 +11085,45 @@ var Share = function (_Entity) {
       return [this.activePlacement()];
     }
   }, {
+    key: 'shareArea',
+    get: function get() {
+      return _vendor.util.convertArea(this.height, this.width);
+    }
+
+    /**
+     * Get all placements from this share
+     * @returns [Placement]
+     */
+
+  }, {
     key: 'allPlacements',
     get: function get() {
-      return this.placements.map(function (placement) {
+      var allPlace = this.placements.map(function (placement) {
         return new _Placement2.default(placement);
       });
+
+      var isUsePlacePosition = allPlace.reduce(function (acc, item, index) {
+        if (index === 0) {
+          return item.positionOnShare !== undefined && item.positionOnShare !== 0;
+        }
+        return acc && item.positionOnShare !== undefined && item.positionOnShare !== 0;
+      }, 0);
+
+      console.log('isUsePlacePosition', isUsePlacePosition);
+      if (isUsePlacePosition) {
+        allPlace.sort(function (a, b) {
+          return a.positionOnShare - b.positionOnShare;
+        });
+        console.log('sort', allPlace);
+        return allPlace;
+      }
+      return allPlace;
     }
   }]);
   return Share;
-}(_Entity3.default);
+}(_Entity3.default); /**
+                      * Created by Manhhailua on 12/5/16.
+                      */
 
 exports.default = Share;
 
@@ -11153,7 +11166,7 @@ module.exports = function(fn, that, length){
 /* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isObject = __webpack_require__(14)
+var isObject = __webpack_require__(16)
   , document = __webpack_require__(1).document
   // in old IE typeof document.createElement is 'object'
   , is = isObject(document) && isObject(document.createElement);
@@ -11165,7 +11178,7 @@ module.exports = function(it){
 /* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = !__webpack_require__(2) && !__webpack_require__(13)(function(){
+module.exports = !__webpack_require__(3) && !__webpack_require__(15)(function(){
   return Object.defineProperty(__webpack_require__(46)('div'), 'a', {get: function(){ return 7; }}).a != 7;
 });
 
@@ -11176,15 +11189,15 @@ module.exports = !__webpack_require__(2) && !__webpack_require__(13)(function(){
 "use strict";
 
 var LIBRARY        = __webpack_require__(30)
-  , $export        = __webpack_require__(8)
+  , $export        = __webpack_require__(9)
   , redefine       = __webpack_require__(55)
-  , hide           = __webpack_require__(9)
-  , has            = __webpack_require__(3)
+  , hide           = __webpack_require__(10)
+  , has            = __webpack_require__(4)
   , Iterators      = __webpack_require__(29)
   , $iterCreate    = __webpack_require__(90)
   , setToStringTag = __webpack_require__(33)
   , getPrototypeOf = __webpack_require__(52)
-  , ITERATOR       = __webpack_require__(10)('iterator')
+  , ITERATOR       = __webpack_require__(11)('iterator')
   , BUGGY          = !([].keys && 'next' in [].keys()) // Safari has buggy iterators w/o `next`
   , FF_ITERATOR    = '@@iterator'
   , KEYS           = 'keys'
@@ -11251,13 +11264,13 @@ module.exports = function(Base, NAME, Constructor, next, DEFAULT, IS_SET, FORCED
 
 var pIE            = __webpack_require__(32)
   , createDesc     = __webpack_require__(25)
-  , toIObject      = __webpack_require__(5)
+  , toIObject      = __webpack_require__(6)
   , toPrimitive    = __webpack_require__(38)
-  , has            = __webpack_require__(3)
+  , has            = __webpack_require__(4)
   , IE8_DOM_DEFINE = __webpack_require__(47)
   , gOPD           = Object.getOwnPropertyDescriptor;
 
-exports.f = __webpack_require__(2) ? gOPD : function getOwnPropertyDescriptor(O, P){
+exports.f = __webpack_require__(3) ? gOPD : function getOwnPropertyDescriptor(O, P){
   O = toIObject(O);
   P = toPrimitive(P, true);
   if(IE8_DOM_DEFINE)try {
@@ -11289,7 +11302,7 @@ exports.f = Object.getOwnPropertySymbols;
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.9 / 15.2.3.2 Object.getPrototypeOf(O)
-var has         = __webpack_require__(3)
+var has         = __webpack_require__(4)
   , toObject    = __webpack_require__(37)
   , IE_PROTO    = __webpack_require__(34)('IE_PROTO')
   , ObjectProto = Object.prototype;
@@ -11306,8 +11319,8 @@ module.exports = Object.getPrototypeOf || function(O){
 /* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var has          = __webpack_require__(3)
-  , toIObject    = __webpack_require__(5)
+var has          = __webpack_require__(4)
+  , toIObject    = __webpack_require__(6)
   , arrayIndexOf = __webpack_require__(85)(false)
   , IE_PROTO     = __webpack_require__(34)('IE_PROTO');
 
@@ -11329,9 +11342,9 @@ module.exports = function(object, names){
 /***/ (function(module, exports, __webpack_require__) {
 
 // most Object methods by ES6 should accept primitives
-var $export = __webpack_require__(8)
+var $export = __webpack_require__(9)
   , core    = __webpack_require__(0)
-  , fails   = __webpack_require__(13);
+  , fails   = __webpack_require__(15);
 module.exports = function(KEY, exec){
   var fn  = (core.Object || {})[KEY] || Object[KEY]
     , exp = {};
@@ -11343,7 +11356,7 @@ module.exports = function(KEY, exec){
 /* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(9);
+module.exports = __webpack_require__(10);
 
 /***/ }),
 /* 56 */
@@ -11362,15 +11375,23 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _vue = __webpack_require__(6);
+var _vue = __webpack_require__(7);
 
 var _vue2 = _interopRequireDefault(_vue);
 
-var _models = __webpack_require__(19);
+var _models = __webpack_require__(12);
 
-var _mixins = __webpack_require__(17);
+var _mixins = __webpack_require__(19);
+
+var _vendor = __webpack_require__(2);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/**
+ * Created by Manhhailua on 11/23/16.
+ */
+
+/* eslint-disable import/no-extraneous-dependencies */
 
 var Banner = _vue2.default.component('banner', {
 
@@ -11412,8 +11433,25 @@ var Banner = _vue2.default.component('banner', {
     window.arfBanners[this.current.id] = this;
   },
   mounted: function mounted() {
-    this.renderToIFrame();
+    if (this.current.bannerType.isInputData !== undefined && this.current.bannerType.isInputData === true && this.current.isIFrame === true) {
+      console.log('renderBannerHTML');
+      this.renderBannerHTML();
+    } else if (this.current.bannerType.isInputData !== undefined && this.current.bannerType.isInputData === false && this.current.isIFrame === true && this.current.bannerType.isUpload !== undefined && this.current.bannerType.isUpload === false) {
+      console.log('renderToIFrame');
+      this.renderToIFrame();
+    } else if (this.current.bannerType.isInputData !== undefined && this.current.bannerType.isInputData === false && this.current.isIFrame === false) {
+      console.log('renderBannerNoIframe');
+      this.renderBannerNoIframe();
+    }
+    if (this.current.bannerType.isUpload !== undefined && this.current.bannerType.isUpload === true) {
+      // this.renderBannerImg();
+      this.renderToIFrame();
+    }
     this.current.countFrequency();
+    if (this.current.isRelative) {
+      // this.$parent.$emit('relativeBannerRender', this.current.keyword);
+      window.ZoneConnect.setRelativeKeyword(this.current.keyword);
+    }
   },
 
 
@@ -11422,6 +11460,8 @@ var Banner = _vue2.default.component('banner', {
      * Wrap ads by an iframe
      */
     renderToIFrame: function renderToIFrame() {
+      var _this = this;
+
       var vm = this;
       var iframe = vm.iframe.el;
 
@@ -11429,13 +11469,18 @@ var Banner = _vue2.default.component('banner', {
         if (vm.$data.isRendered === false) {
           iframe.width = vm.current.width;
           iframe.height = vm.current.height;
+          iframe.id = 'iframe-' + vm.current.id;
           iframe.frameBorder = vm.iframe.frameBorder;
           iframe.marginWidth = vm.iframe.marginWidth;
           iframe.marginHeight = vm.iframe.marginHeight;
           iframe.scrolling = 'no'; // Prevent iframe body scrolling
 
           iframe.contentWindow.document.open();
-          iframe.contentWindow.document.write(vm.current.html);
+          if (_this.current.bannerType.isUpload !== undefined && _this.current.bannerType.isUpload === true) {
+            iframe.contentWindow.document.write('<img src="' + vm.current.imageUrl + '">');
+          } else {
+            iframe.contentWindow.document.write(vm.current.html);
+          }
           iframe.contentWindow.document.close();
 
           // Prevent scroll on IE
@@ -11451,13 +11496,148 @@ var Banner = _vue2.default.component('banner', {
       } catch (error) {
         throw new Error(error);
       }
+    },
+    renderBannerHTML: function renderBannerHTML() {
+      var vm = this;
+      var urlCore = 'http://admicro1.vcmedia.vn/core/admicro_core_nld.js';
+      var sponsorFormat = vm.current.linkFormatBannerHtml;
+      var writeIfrm = function writeIfrm(ifrm) {
+        ifrm = ifrm.contentWindow ? ifrm.contentWindow.document : // eslint-disable-line
+        ifrm.contentDocument ? ifrm.contentDocument : ifrm.document;
+        ifrm.open();
+        ifrm.write('' + ('<head>' + '<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">' + '<script>inDapIF = true;function mobileCallbackMedium(){window.parent.callbackMedium();}</script>' + '</head><body style="border: none;display: block;margin: 0 auto;">' + '<script>' + ' </script>' + '<script src="') + sponsorFormat.toString() + '" type="text/javascript"> </script>' + '<script >sponsoradx(parent.data)</script></body>');
+        ifrm.close();
+        document.getElementById('' + vm.current.id).style.display = 'block';
+      };
+
+      console.log('linkFormatBannerHtml', sponsorFormat);
+      var loadIfrm = function loadIfrm() {
+        var ifrm = vm.iframe.el;
+        ifrm.onload = function () {
+          ifrm.width = vm.current.width;
+          // ifrm.height = vm.current.height;
+          ifrm.id = 'iframe-' + vm.current.id;
+          ifrm.frameBorder = vm.iframe.frameBorder;
+          ifrm.marginWidth = vm.iframe.marginWidth;
+          ifrm.marginHeight = vm.iframe.marginHeight;
+          ifrm.scrolling = 'no'; // Prevent iframe body scrolling
+          ifrm.style.display = 'block';
+          ifrm.style.border = 'none';
+          ifrm.scrolling = 'no';
+          ifrm.allowfullscreen = 'true';
+          ifrm.webkitallowfullscreen = 'true';
+          ifrm.mozallowfullscreen = 'true';
+          ifrm.src = 'about:blank';
+
+          /* eslint-disable no-useless-concat */
+          // window.data = JSON.parse(vm.current.dataBannerHtml.replace(/\r?\n|\r/g, ''));
+          try {
+            eval('window.data = ' + vm.current.dataBannerHtml.replace(/\r?\n|\r/g, '') + ';'); // eslint-disable-line
+          } catch (err) {
+            writeIfrm(ifrm);
+          }
+          // ifrm = ifrm.contentWindow ? ifrm.contentWindow.document : // eslint-disable-line
+          //   ifrm.contentDocument ? ifrm.contentDocument : ifrm.document;
+          // ifrm.open();
+          // ifrm.write(`${`${'<head>' +
+          //   '<meta name="viewport" content="width=device-width,
+          // initial-scale=1.0, maximum-scale=1.0, user-scalable=0">' +
+          //   '<script>inDapIF = true;
+          // function mobileCallbackMedium(){window.parent.callbackMedium();}</sc' + 'ript>' +
+          //   '</head><body style="border: none;display: block;margin: 0 auto;">' +
+          //   '<scri' + 'pt>'} </scr` + 'ipt>' +
+          //   '<scri' + 'pt src="'}${sponsorFormat.toString()}"
+          // type="text/javascript"> </scr` + 'ipt>' +
+          //   '<scri' + 'pt >sponsoradx(parent.data)</scr' +
+          //   'ipt></body>');
+          // ifrm.close();
+          // document.getElementById(`${vm.current.id}`).style.display = 'block';
+          writeIfrm(ifrm);
+        };
+
+        try {
+          vm.$el.replaceChild(ifrm, vm.$refs.banner); // Do the trick
+          var setHeightIframe = setInterval(function () {
+            var iframe = document.getElementById('iframe-' + vm.current.id);
+            if (iframe !== undefined) {
+              var innerDoc = iframe.contentDocument || iframe.contentWindow.document;
+              iframe.height = innerDoc.documentElement.getElementsByTagName('body')[0].offsetHeight;
+              clearInterval(setHeightIframe);
+            }
+          }, 100);
+        } catch (error) {
+          throw new Error(error);
+        }
+      };
+      var loadAsync = setInterval(function () {
+        if (window.isLoadLib !== undefined && window.isLoadLib) {
+          loadIfrm();
+          clearInterval(loadAsync);
+        }
+      }, 500);
+      _vendor.util.admLoadJs(urlCore, 'admicro_core_nld', function () {
+        loadIfrm();
+        clearInterval(loadAsync);
+      });
+    },
+    renderBannerNoIframe: function renderBannerNoIframe() {
+      var vm = this;
+      var urlCore = 'http://admicro1.vcmedia.vn/core/admicro_core_nld.js';
+      var loadAsync = setInterval(function () {
+        if (window.isLoadLib !== undefined && window.isLoadLib) {
+          var idw = document.getElementById('' + vm.current.id);
+          if (idw) {
+            idw.innerHTML = '';
+            var data = vm.current.html;
+            admExecJs(data, '' + vm.current.id); // eslint-disable-line no-undef
+          }
+          clearInterval(loadAsync);
+        }
+      }, 500);
+      _vendor.util.admLoadJs(urlCore, 'admicro_core_nld', function () {
+        var idw = document.getElementById('' + vm.current.id);
+        if (idw) {
+          idw.innerHTML = '';
+          var data = vm.current.html;
+          admExecJs(data, '' + vm.current.id); // eslint-disable-line no-undef
+        }
+        clearInterval(loadAsync);
+      });
     }
   },
 
   render: function render(h) {
     // eslint-disable-line no-unused-vars
     var vm = this;
-
+    // const height = setInterval(() => {
+    //   if (document.getElementById(`${vm.current.id}`)) {
+    //     this.$parent.$emit('bannerHeight', document.getElementById(`${vm.current.id}`)
+    // .clientHeight);
+    //     clearInterval(height);
+    //   }
+    // }, 100);
+    var dev = location.search.indexOf('checkPlace=dev') !== -1;
+    if (dev) {
+      return h(
+        'div',
+        {
+          attrs: {
+            id: vm.current.id
+          },
+          'class': 'arf-banner',
+          style: {
+            width: vm.current.width + 'px',
+            zIndex: 0,
+            position: 'absolute'
+          }
+        },
+        [h(
+          'div',
+          { ref: 'banner' },
+          ['banner content']
+        )]
+      );
+    }
     return h(
       'div',
       {
@@ -11466,22 +11646,17 @@ var Banner = _vue2.default.component('banner', {
         },
         'class': 'arf-banner',
         style: {
-          width: vm.current.width + 'px',
-          height: vm.current.height + 'px'
+          width: vm.current.width + 'px'
         }
       },
       [h(
         'div',
         { ref: 'banner' },
-        [vm.current.html]
+        ['banner content']
       )]
     );
   }
-}); /**
-     * Created by Manhhailua on 11/23/16.
-     */
-
-/* eslint-disable import/no-extraneous-dependencies */
+});
 
 exports.default = Banner;
 
@@ -11496,15 +11671,15 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _vue = __webpack_require__(6);
+var _vue = __webpack_require__(7);
 
 var _vue2 = _interopRequireDefault(_vue);
 
-var _models = __webpack_require__(19);
+var _models = __webpack_require__(12);
 
-var _components = __webpack_require__(16);
+var _components = __webpack_require__(18);
 
-var _mixins = __webpack_require__(17);
+var _mixins = __webpack_require__(19);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -11529,6 +11704,12 @@ var Placement = _vue2.default.component('placement', {
     window.arfPlacements = window.arfPlacements || {};
     window.arfPlacements[this.current.id] = this;
   },
+  mounted: function mounted() {
+    // this.$on('bannerHeight', (bannerHeight) => {
+    //   document.getElementById(`${this.current.id}`).style.height = `${bannerHeight}px`;
+    //   this.$parent.$emit('PlaceHeight', bannerHeight);
+    // });
+  },
 
 
   computed: {
@@ -11544,7 +11725,59 @@ var Placement = _vue2.default.component('placement', {
   render: function render(h) {
     // eslint-disable-line no-unused-vars
     var vm = this;
-
+    // make a trigger to parent component(share) and send place;
+    this.$parent.$emit('render', this.current.id, this.current.revenueType);
+    var dev = location.search.indexOf('checkPlace=dev') !== -1;
+    if (dev) {
+      return h(
+        'div',
+        {
+          attrs: {
+            id: vm.current.id
+          },
+          'class': 'arf-placement',
+          style: {
+            width: vm.current.width + 'px',
+            height: vm.current.height + 'px'
+          }
+        },
+        [h(
+          _components.Banner,
+          {
+            attrs: { model: vm.activeBannerModel }
+          },
+          []
+        ), h(
+          'div',
+          {
+            style: {
+              zIndex: 9999,
+              margin: 'auto',
+              position: 'relative',
+              color: 'red',
+              paddingTop: '5px',
+              // backgroundColor: 'yellow',
+              // opacity: 0.5,
+              width: vm.current.width + 'px',
+              height: vm.current.height + 'px'
+            }
+          },
+          [h(
+            'p',
+            {
+              style: {
+                backgroundColor: 'black',
+                color: 'white',
+                fontSize: '15pt',
+                width: '35%',
+                textAlign: 'center'
+              }
+            },
+            [vm.current.revenueType, ' ', vm.current.positionOnShare]
+          )]
+        )]
+      );
+    }
     return h(
       'div',
       {
@@ -11553,8 +11786,7 @@ var Placement = _vue2.default.component('placement', {
         },
         'class': 'arf-placement',
         style: {
-          width: vm.current.width + 'px',
-          height: vm.current.height + 'px'
+          width: vm.current.width + 'px'
         }
       },
       [h(
@@ -11581,15 +11813,15 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _vue = __webpack_require__(6);
+var _vue = __webpack_require__(7);
 
 var _vue2 = _interopRequireDefault(_vue);
 
-var _models = __webpack_require__(19);
+var _models = __webpack_require__(12);
 
-var _components = __webpack_require__(16);
+var _components = __webpack_require__(18);
 
-var _mixins = __webpack_require__(17);
+var _mixins = __webpack_require__(19);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -11614,11 +11846,35 @@ var Share = _vue2.default.component('share', {
     window.arfShares = window.arfShares || {};
     window.arfShares[this.current.id] = this;
   },
+  mounted: function mounted() {
+    var _this = this;
+
+    // this.$on('PlaceHeight', (PlaceHeight) => {
+    //   let count = 0;
+    //   let height = 0;
+    //   height += PlaceHeight;
+    //   count += 1;
+    //   if (count === this.current.allPlacements.length) {
+    //     document.getElementById(`${this.current.id}`).style.height = `${height}px`;
+    //     this.$parent.$emit('shareHeight', height);
+    //   }
+    // });
+    this.$on('render', function (placeID, revenueType) {
+      var placeIndex = _this.activePlacementsModels.reduce(function (acc, item, index) {
+        if (item.id === placeID) {
+          return index;
+        }
+        return acc;
+      }, 0);
+      _this.$parent.$emit('placementRendered', placeIndex, revenueType, placeID);
+    });
+  },
 
 
   computed: {
     current: function current() {
-      return this.model instanceof _models.Share ? this.model : new _models.Share(this.model);
+      var shareModel = this.model instanceof _models.Share ? this.model : new _models.Share(this.model);
+      return shareModel;
     },
     activePlacementsModels: function activePlacementsModels() {
       return this.current.activePlacements();
@@ -11635,11 +11891,11 @@ var Share = _vue2.default.component('share', {
         attrs: {
           id: vm.current.id
         },
-        'class': 'arf-share',
-        style: {
-          width: vm.current.width + 'px',
-          height: vm.current.height + 'px'
-        }
+        'class': 'arf-share'
+        // style={{
+        //   width: `${vm.current.width}px`,
+        //   height: `${vm.current.height}px`,
+        // }}
       },
       [vm.activePlacementsModels.map(function (placement) {
         return h(
@@ -11667,23 +11923,19 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _vue = __webpack_require__(6);
+var _vue = __webpack_require__(7);
 
 var _vue2 = _interopRequireDefault(_vue);
 
-var _models = __webpack_require__(19);
+var _models = __webpack_require__(12);
 
-var _components = __webpack_require__(16);
+var _components = __webpack_require__(18);
 
-var _mixins = __webpack_require__(17);
+var _mixins = __webpack_require__(19);
+
+var _vendor = __webpack_require__(2);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/**
- * Created by Manhhailua on 11/24/16.
- */
-
-/* eslint-disable import/no-extraneous-dependencies */
 
 var Zone = _vue2.default.component('zone', {
 
@@ -11696,9 +11948,45 @@ var Zone = _vue2.default.component('zone', {
   mixins: [_mixins.dom],
 
   created: function created() {
+    if (typeof window.ZoneConnect === 'undefined' && window.ZoneConnect === undefined) {
+      window.ZoneConnect = {
+        relativeKeyword: '',
+        setRelativeKeyword: function setRelativeKeyword(keyword) {
+          this.relativeKeyword += '' + (this.relativeKeyword === '' ? '' : ',') + keyword;
+        },
+        clearRelativeKeyword: function clearRelativeKeyword() {
+          this.relativeKeyword = '';
+        }
+      };
+    }
     // Init global container object
     window.arfZones = window.arfZones || {};
     window.arfZones[this.current.id] = this;
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    // this.$on('shareHeight', (height) => {
+    //   document.getElementById(`${this.current.id}`).style.height = `${height}px`;
+    // });
+
+    this.$on('placementRendered', function (index, revenueType, placeID) {
+      console.log('compete', _this.current.id, index, revenueType);
+      var domain = _vendor.util.getThisChannel(_vendor.term.getCurrentDomain('Site:Pageurl')).slice(0, 2).join('.');
+      var cookie = _vendor.adsStorage.getStorage('_cpt');
+      var checkCookie = _vendor.adsStorage.subCookie(cookie, 'Ver:', 0);
+      if (checkCookie === '') {
+        cookie = 'Ver:25;';
+      }
+      _vendor.adsStorage.setStorage('_cpt', cookie, '', '/', domain);
+      var zoneCookie = _vendor.adsStorage.subCookie(cookie, _this.current.id + ':', 0);
+      cookie = zoneCookie === '' || zoneCookie === undefined ? cookie + ';' + _this.current.id + ':;' : cookie;
+      zoneCookie = _vendor.adsStorage.subCookie(cookie, _this.current.id + ':', 0);
+      var separateChar = '' + (index === 0 ? '|' : '][');
+      var zoneCookieUpdate = '' + zoneCookie + separateChar + domain + ')(' + index + ')(' + revenueType + ')(' + placeID;
+      cookie = ('' + cookie).replace(zoneCookie, zoneCookieUpdate);
+      _vendor.adsStorage.setStorage('_cpt', cookie, '', '/', domain);
+    });
   },
 
 
@@ -11707,7 +11995,7 @@ var Zone = _vue2.default.component('zone', {
       return this.model instanceof _models.Zone ? this.model : new _models.Zone(this.model);
     },
     activeShareModel: function activeShareModel() {
-      return this.current.activeShare();
+      return this.current.activeShare(window.ZoneConnect.relativeKeyword);
     }
   },
 
@@ -11721,11 +12009,12 @@ var Zone = _vue2.default.component('zone', {
         attrs: {
           id: vm.current.id
         },
-        'class': 'arf-zone',
-        style: {
-          width: vm.current.width + 'px',
-          height: vm.current.height + 'px'
-        }
+        'class': 'arf-zone'
+        // style={{
+        //   // width: `${vm.current.width}px`,
+        //   // height: 'auto',
+        //   margin: 'auto',
+        // }}
       },
       [h(
         _components.Share,
@@ -11736,7 +12025,11 @@ var Zone = _vue2.default.component('zone', {
       )]
     );
   }
-});
+}); /**
+     * Created by Manhhailua on 11/24/16.
+     */
+
+/* eslint-disable import/no-extraneous-dependencies */
 
 exports.default = Zone;
 
@@ -11756,11 +12049,11 @@ var _stringify = __webpack_require__(56);
 
 var _stringify2 = _interopRequireDefault(_stringify);
 
-var _vue = __webpack_require__(6);
+var _vue = __webpack_require__(7);
 
 var _vue2 = _interopRequireDefault(_vue);
 
-var _components = __webpack_require__(16);
+var _components = __webpack_require__(18);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -11848,11 +12141,11 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _vue = __webpack_require__(6);
+var _vue = __webpack_require__(7);
 
 var _vue2 = _interopRequireDefault(_vue);
 
-var _vendor = __webpack_require__(20);
+var _vendor = __webpack_require__(2);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -12023,7 +12316,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _typeof2 = __webpack_require__(7);
+var _typeof2 = __webpack_require__(8);
 
 var _typeof3 = _interopRequireDefault(_typeof2);
 
@@ -12031,7 +12324,7 @@ var _getPrototypeOf = __webpack_require__(21);
 
 var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
 
-var _classCallCheck2 = __webpack_require__(11);
+var _classCallCheck2 = __webpack_require__(13);
 
 var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
 
@@ -12047,7 +12340,7 @@ var _inherits2 = __webpack_require__(23);
 
 var _inherits3 = _interopRequireDefault(_inherits2);
 
-var _Entity2 = __webpack_require__(18);
+var _Entity2 = __webpack_require__(20);
 
 var _Entity3 = _interopRequireDefault(_Entity2);
 
@@ -12055,7 +12348,7 @@ var _Share = __webpack_require__(43);
 
 var _Share2 = _interopRequireDefault(_Share);
 
-var _vendor = __webpack_require__(20);
+var _vendor = __webpack_require__(2);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -12072,27 +12365,788 @@ var Zone = function (_Entity) {
     return _this;
   }
 
-  /**
-   * Get all shares from this zone
-   * @returns [Share]
-   */
-
-
   (0, _createClass3.default)(Zone, [{
-    key: 'activeShare',
+    key: 'fixZoneHeight',
+    value: function fixZoneHeight(height) {
+      this.height = height;
+    }
+    /**
+     * Get all shares from this zone
+     * @returns [Share]
+     */
 
+  }, {
+    key: 'filterShareDynamic',
+    value: function filterShareDynamic(relativeKeyword) {
+      var _this2 = this;
+
+      // choose placement base on weight.
+      var activePlacement = function activePlacement(allPlaces, type) {
+        var randomNumber = Math.random() * 100;
+        var ratio = allPlaces.reduce(function (tmp, place) {
+          return (type === 'cpd' ? place.data.cpdPercent : place.data.weight) + tmp;
+        }, 0) / 100;
+
+        return allPlaces.reduce(function (range, placement) {
+          var nextRange = range + (type === 'cpd' ? placement.data.cpdPercent : placement.data.weight) / ratio;
+
+          if ((typeof range === 'undefined' ? 'undefined' : (0, _typeof3.default)(range)) === 'object') {
+            return range;
+          }
+
+          if (randomNumber >= range && randomNumber < nextRange) {
+            return placement;
+          }
+
+          return nextRange;
+        }, 0);
+      };
+      var filterPlaceWithKeyword = function filterPlaceWithKeyword(places, arrRelativeKeyword) {
+        var placesWithKeyword = places.filter(function (place) {
+          return place.data.allBanners.reduce(function (acc1, banner) {
+            var bannerKeyword = banner.keyword.split(',').map(function (item) {
+              return item.replace(' ', '');
+            });
+            return arrRelativeKeyword.filter(function (key) {
+              return bannerKeyword.reduce(function (acc2, bannerKey, index2) {
+                return index2 === 0 ? bannerKey === key : acc2 || bannerKey === key;
+              }, 0);
+            }).length > 0;
+          }, 0);
+        });
+        return placesWithKeyword;
+      };
+      var allShare = this.allShares;
+      var arrayRelativeKeyword = [];
+      var allPlace = [];
+      this.allShares.reduce(function (temp, share) {
+        var isUsePlacePosition = share.allPlacements.reduce(function (acc, item, index) {
+          if (index === 0) {
+            return item.positionOnShare !== undefined && item.positionOnShare !== 0;
+          }
+          return acc && item.positionOnShare !== undefined && item.positionOnShare !== 0;
+        }, 0);
+        console.log('isUserPlacePositionZone', isUsePlacePosition);
+        if (isUsePlacePosition) {
+          return allPlace.push(share.allPlacements.map(function (item) {
+            return { data: item, index: item.positionOnShare - 1 };
+          }));
+        }
+        return allPlace.push(share.allPlacements.map(function (item, index) {
+          return { data: item, index: index };
+        }));
+      }, 0);
+      allPlace = _vendor.util.flatten(allPlace);
+      console.log('allPlaceZone', allPlace);
+      arrayRelativeKeyword = relativeKeyword.split(',').map(function (item) {
+        return item.replace(' ', '');
+      });
+      console.log('arrayRelativeKeyword', relativeKeyword, arrayRelativeKeyword);
+      // console.log('all Place', allPlace);
+      // get place min area
+      var getMinPlace = function getMinPlace(allPlaces) {
+        if (_this2.zoneType === 'right') {
+          var _min = allPlaces[0].data.height;
+          for (var i = 0, leng = allPlaces.length; i < leng; i += 1) {
+            if (allPlaces[i].data.height < _min) {
+              _min = allPlaces[i].data.height;
+            }
+          }
+          return _min;
+        }
+        var min = allPlaces[0].data.width;
+        for (var _i = 0, _leng = allPlaces.length; _i < _leng; _i += 1) {
+          if (allPlaces[_i].data.width < min) {
+            min = allPlaces[_i].data.width;
+          }
+        }
+        return min;
+      };
+      var minPlace = getMinPlace(allPlace);
+      var getNumberOfParts = function getNumberOfParts(height, isRoundUp) {
+        if (_this2.zoneType === 'right') {
+          if (height % minPlace > 0 && isRoundUp) {
+            return Math.round(height / minPlace) + 1;
+          }
+          return Math.round(height / minPlace);
+        }
+        if (height / minPlace % 1 > 0.1 && isRoundUp) {
+          return Math.round(height / minPlace) + 1;
+        }
+        return Math.round(height / minPlace);
+      };
+      var numberOfPlaceInShare = this.zoneType === 'right' ? getNumberOfParts(this.height) : getNumberOfParts(this.width);
+      console.log('minPlace', minPlace);
+      // const computeShareWithPlacementType = (allPlacement, placementType, shareConstruct) => {
+      //   const shareTemplate = {
+      //     id: 'DS',
+      //     name: 'Dynamic Share',
+      //     html: '<div class="hello"></div>',
+      //     css: '.arf-placement{display:inline-block;margin-left:50px;}',
+      //     outputCss: '',
+      //     width: this.width,
+      //     height: this.height,
+      //     classes: '',
+      //     weight: 0,
+      //     type: 'multiple',
+      //     description: `Share ${this.width}x${this.height}`,
+      //     zoneId: this.id,
+      //     placements: [],
+      //   };
+      //   const shares = [];
+      //   const shareDatas = [];
+      //
+      //   // get all places have type === placementType
+      // eslint-disable-next-line
+      //   const monopolyPlaces = allPlacement.filter(y => y.data.AdsType.revenueType === placementType);
+      //   console.log('monopolyPlaces', monopolyPlaces);
+      //   const createShareByPlaceMonopolies = (placeMonopolies) => {
+      //     // Create Share : S(zone) - S(p) = S(free)
+      //     const SumPrArea = placeMonopolies.reduce((temp, item) =>
+      //     temp + item.data.PlacementArea, 0);
+      //     const FreeArea = this.ZoneArea - SumPrArea;
+      //     // console.log('FreeArea', FreeArea);
+      //
+      //     for (let i = 1; i <= FreeArea; i += 1) {
+      //       // console.log('i', i);
+      //       // divide share base on free area and number of part.
+      //       const shareRatios = util.ComputeShare(FreeArea, i);
+      //       console.log('shareRatios', shareRatios);
+      //       // Browse each shareRatio on above and create a share for it.
+      //       shareRatios.reduce((temp, shareRatio) => {
+      //         console.log('shareRatio', shareRatio);
+      //         // this variable to store places in a share which are chosen bellow
+      //         let share = [];
+      //         placeMonopolies.reduce((x, y) =>
+      //           shareRatio.splice(y.index, 0, y.data.PlacementArea), 0);
+      //         let isRelative = false;
+      //         // Browse each placeRatio in shareRatio, then find a placement fit it.
+      //         shareRatio.reduce((temp2, placeRatio, index) => {
+      //           console.log('placeRatio', placeRatio);
+      //           if (placeMonopolies.map(item => item.index).indexOf(index) !== -1) {
+      //             return 0;
+      //           }
+      //           // find all placement fit with area place
+      //           let places = allPlacement.filter(place =>
+      //             (place.data.PlacementArea === placeRatio &&
+      //             placeMonopolies.indexOf(place) === -1 &&
+      //             place.data.revenueType !== 'pr' &&
+      //             // placeChosen.indexOf(place) === -1 &&
+      //             place.index === index &&
+      //             place.data.revenueType === shareConstruct[index].type));
+      //
+      //           // filter place with relative keyword
+      //           let placesWithKeyword = [];
+      //           if (arrayRelativeKeyword.length > 0) {
+      //             placesWithKeyword = filterPlaceWithKeyword(places, arrayRelativeKeyword);
+      //             if (placesWithKeyword.length > 0) {
+      //               isRelative = true;
+      //               places = placesWithKeyword;
+      //             }
+      //           }
+      //
+      //           // if don't have any places fit in area => return empty share
+      //           if (places.length === 0) {
+      //             share = [];
+      //             return 0;
+      //           } else { // eslint-disable-line no-else-return
+      //             // choose random a placement which are collected on above
+      //             // const randomIndex = parseInt(Math.floor(Math.random() * (places.length)), 10);
+      //             // const place = places[randomIndex];
+      //
+      //             const place = activePlacement(places, shareConstruct[index]);
+      //             console.log('activePlacement', place);
+      //             share.push(place.data);
+      //           }
+      //           return 0;
+      //         }, 0);
+      //
+      //         // if share available => insert monopoly places
+      //         if (share.length !== 0) {
+      //           // push (all places have type === placementType) into share.
+      //           placeMonopolies.reduce((x, y) => share.splice(y.index, 0, y.data), 0);
+      //           const SumArea = share.reduce((acc, item) =>
+      //           acc + item.PlacementArea, 0);
+      //           const Free = this.ZoneArea - SumArea;
+      //           console.log('Freeasd', Free);
+      //           if (Free === 0 && relativeKeyword !== '' && isRelative) {
+      //             console.log('ShareTest', share);
+      //             shares.push(share);
+      //             isRelative = false;
+      //             share = [];
+      //           }
+      //           if (Free === 0) {
+      //             shares.push(share);
+      //             isRelative = false;
+      //             share = [];
+      //           }
+      //         }
+      //         return '';
+      //       }, 0);
+      //     }
+      //     console.log('shares', shares);
+      //     shareTemplate.weight = 100 / shares.length;
+      //     for (let i = 0; i < shares.length; i += 1) {
+      //       shareTemplate.id = `DS-${i}`;
+      //       shareTemplate.placements = shares[i];
+      //       const shareData = new Share(shareTemplate);
+      //       shareDatas.push(shareData);
+      //     }
+      //   };
+      //   if (monopolyPlaces.length > 0) {
+      //     if (placementType === 'pr') {
+      //       createShareByPlaceMonopolies(monopolyPlaces);
+      //
+      //       console.log('shareDatas', shareDatas);
+      //       return shareDatas;
+      //     }
+      //     // collect placements which share the place order with monopoly places ('cpd').
+      //     let shareWith = [];
+      //     monopolyPlaces.reduce((acc, monopolyPlace) => allPlace.reduce((acc2, place) => {
+      //       if (place.index === monopolyPlace.index &&
+      //         place.data.revenueType !== monopolyPlace.data.revenueType) {
+      //         shareWith.push(place);
+      //       }
+      //       return 0;
+      //     }, 0), 0);
+      //     // filter keyword
+      //     let shareWithKeyword = [];
+      //     if (arrayRelativeKeyword.length > 0) {
+      //       shareWithKeyword = filterPlaceWithKeyword(shareWith, arrayRelativeKeyword);
+      //       if (shareWithKeyword.length > 0) {
+      //         shareWith = shareWithKeyword;
+      //       }
+      //     }
+      //
+      //     // mix the monopoly share place with other place. array: monopolyPlace - lib: otherPlace
+      //     const createMonopolyPlacesWithShare = (array, lib) => {
+      //       const res = [];
+      //       array.reduce((acc1, ArrayItem, index1, array1) => {
+      //         const replace = (library, index2, arrTemp) => {
+      //           const arrayTemp = arrTemp.map(item => item);
+      //           library.reduce((acc2, item) => {
+      //             if (item.index === array1[index2].index) {
+      //               arrayTemp.splice(index2, 1, item);
+      //               res.push(arrayTemp);
+      //               if (index2 < (arrTemp.length - 1)) {
+      //                 replace(library, index2 + 1, arrayTemp);
+      //               }
+      //             }
+      //             return 0;
+      //           }, 0);
+      //         };
+      //         replace(lib, index1, array1);
+      //         return 0;
+      //       }, 0);
+      //       res.push(array);
+      //       return res;
+      //     };
+      //     let combinationMonopolyPlaces = [];
+      //     // const numberOfCombination = monopolyPlaces.length;
+      //     const monopolyPlacesWithShare = createMonopolyPlacesWithShare(monopolyPlaces, shareWith);
+      //     // console.log('monopolyPlaces', monopolyPlaces);
+      //     console.log('monopolyPlacesWithShare', monopolyPlacesWithShare);
+      //     // variable "conputeAll" to compute all cases combination.
+      //     const computeAll = true;
+      //     if (computeAll) {
+      //       // can use function combinations (1-n combination n)
+      //       // instead of k_combination (k Combination n) for compute all cases.
+      //       for (let i = 0; i < monopolyPlacesWithShare.length; i += 1) {
+      //         combinationMonopolyPlaces = combinationMonopolyPlaces.concat(
+      //           util.combinations(monopolyPlacesWithShare[i]).filter(item =>
+      //             item.reduce((acc, item2) =>
+      //               ((acc + item2.data.PlacementArea) < this.ZoneArea), 0)));
+      //       }
+      //     } else {
+      //       for (let i = 0; i < monopolyPlacesWithShare.length; i += 1) {
+      //         combinationMonopolyPlaces = combinationMonopolyPlaces.concat(
+      //           util.kCombinations(monopolyPlacesWithShare[i], 1).filter(item =>
+      //             item.reduce((acc, item2) =>
+      //               ((acc + item2.data.PlacementArea) < this.ZoneArea), 0)));
+      //       }
+      //     }
+      // eslint-disable-next-line
+      //     const numberOfMonopoly = shareConstruct.reduce((acc, item) => (item.type === 'cpd' ? (acc + 1) : (acc + 0)), 0);
+      //     console.log('numberOfMonopoly', numberOfMonopoly);
+      //     console.log('combinationMonopolyPlaces', combinationMonopolyPlaces);
+      //     // filter place have revenueType same with share constructor
+      //     combinationMonopolyPlaces = combinationMonopolyPlaces.filter(item =>
+      //     (item.length >= numberOfMonopoly) && item.reduce((acc, item2, index) => {
+      //       if (index === 0) {
+      //         return item2.data.revenueType === shareConstruct[item2.index].type;
+      //       }
+      //       return acc && item2.data.revenueType === shareConstruct[item2.index].type;
+      //     }, 0));
+      //     console.log('combination', combinationMonopolyPlaces);
+      //     combinationMonopolyPlaces.reduce((acc, item) => createShareByPlaceMonopolies(item), 0);
+      //
+      //     console.log('shareDatas', shareDatas);
+      //     return shareDatas;
+      //   }
+      //   return [];
+      // };
+      var computeShareWithPlacementType2 = function computeShareWithPlacementType2(allPlacement, placementType, shareConstruct) {
+        var shareTemplate = {
+          id: 'DS',
+          name: 'Dynamic Share',
+          html: '<div class="hello"></div>',
+          css: '.arf-placement{display:inline-block;margin-left:50px;}',
+          outputCss: '',
+          width: _this2.width,
+          height: _this2.height,
+          classes: '',
+          weight: 0,
+          type: 'multiple',
+          description: 'Share ' + _this2.width + 'x' + _this2.height,
+          zoneId: _this2.id,
+          placements: []
+        };
+        var shares = [];
+        var shareDatas = [];
+        var createShareByPlaceMonopolies = function createShareByPlaceMonopolies(placeMonopolies) {
+          // Create Share : S(zone) - S(p) = S(free)
+          var SumPrArea = placeMonopolies.reduce(function (temp, item) {
+            return _this2.zoneType === 'right' ? temp + item.data.height : temp + item.data.width;
+          }, 0);
+          var FreeArea = _this2.zoneType === 'right' ? _this2.height - SumPrArea : _this2.width - SumPrArea;
+          // console.log('FreeArea', FreeArea);
+          var numberOfParts = getNumberOfParts(FreeArea);
+          for (var i = 1; i <= numberOfParts; i += 1) {
+            // console.log('i', i);
+            // divide share base on free area and number of part.
+            var shareRatios = _vendor.util.ComputeShare(numberOfParts, i);
+            // console.log('shareRatios', shareRatios);
+            // Browse each shareRatio on above and create a share for it.
+            shareRatios.reduce(function (temp, shareRatio) {
+              // console.log('shareRatio', shareRatio);
+              // this variable to store places in a share which are chosen bellow
+              var share = [];
+              placeMonopolies.reduce(function (x, y) {
+                return shareRatio.splice(y.index, 0, _this2.zoneType === 'right' ? getNumberOfParts(y.data.height, true) : getNumberOfParts(y.data.width, true));
+              }, 0);
+              var isRelative = false;
+              // Browse each placeRatio in shareRatio, then find a placement fit it.
+              shareRatio.reduce(function (temp2, placeRatio, index) {
+                // console.log('placeRatio', placeRatio);
+                if (placeMonopolies.map(function (item) {
+                  return item.index;
+                }).indexOf(index) !== -1) {
+                  return 0;
+                }
+                // find all placement fit with area place
+                var places = allPlacement.filter(function (place) {
+                  return (
+                    // getNumberOfParts(place.data.height, true) < numberOfParts &&
+                    getNumberOfParts(_this2.zoneType === 'right' ? place.data.height : place.data.width, true) === placeRatio &&
+                    // place.data.PlacementArea === placeRatio &&
+                    placeMonopolies.indexOf(place) === -1 && place.data.revenueType !== 'pr' &&
+                    // placeChosen.indexOf(place) === -1 &&
+                    place.index === index && place.data.revenueType === shareConstruct[index].type
+                  );
+                });
+
+                // filter place with relative keyword
+                var placesWithKeyword = [];
+                if (arrayRelativeKeyword.length > 0) {
+                  placesWithKeyword = filterPlaceWithKeyword(places, arrayRelativeKeyword);
+                  if (placesWithKeyword.length > 0) {
+                    isRelative = true;
+                    places = placesWithKeyword;
+                  }
+                }
+
+                // if don't have any places fit in area => return empty share
+                if (places.length === 0) {
+                  share = [];
+                  return 0;
+                } else {
+                  // eslint-disable-line no-else-return
+                  // choose random a placement which are collected on above
+                  // const randomIndex = parseInt(Math.floor(Math.random() * (places.length)), 10);
+                  // const place = places[randomIndex];
+
+                  var place = activePlacement(places, shareConstruct[index]);
+                  // console.log('random', places.length, randomIndex);
+                  share.push(place.data);
+                }
+                return 0;
+              }, 0);
+
+              // if share available => insert monopoly places
+              if (share.length !== 0) {
+                // push (all places have type === placementType) into share.
+                placeMonopolies.reduce(function (x, y) {
+                  return share.splice(y.index, 0, y.data);
+                }, 0);
+                var SumArea = share.reduce(function (acc, item) {
+                  return acc + getNumberOfParts(_this2.zoneType === 'right' ? item.height : item.width, true);
+                }, 0);
+                var Free = getNumberOfParts(_this2.zoneType === 'right' ? _this2.height : _this2.width) - SumArea;
+                console.log('Freeasd', Free);
+                if (Free === 0 && relativeKeyword !== '' && isRelative) {
+                  console.log('ShareTest', share);
+                  shares.push(share);
+                  isRelative = false;
+                  share = [];
+                }
+                if (Free === 0) {
+                  shares.push(share);
+                  isRelative = false;
+                  share = [];
+                }
+              }
+
+              return '';
+            }, 0);
+          }
+
+          shareTemplate.weight = 100 / shares.length;
+          for (var _i2 = 0; _i2 < shares.length; _i2 += 1) {
+            shareTemplate.id = 'DS-' + _i2;
+            shareTemplate.placements = shares[_i2];
+            var shareData = new _Share2.default(shareTemplate);
+            shareDatas.push(shareData);
+          }
+        };
+        var createShareByPlaceCpm = function createShareByPlaceCpm() {
+          var numberOfParts = getNumberOfParts(_this2.zoneType === 'right' ? _this2.height : _this2.width);
+          console.log('numberOfParts', numberOfParts);
+          for (var i = 1; i <= numberOfParts; i += 1) {
+            // divide share base on free area and number of part.
+            var shareRatios = _vendor.util.ComputeShare(numberOfParts, i);
+            console.log('shareRatios', shareRatios);
+            // Browse each shareRatio on above and create a share for it.
+            shareRatios.reduce(function (temp, shareRatio) {
+              // this variable to store places in a share which are chosen bellow
+              var share = [];
+              var isRelative = false;
+              // Browse each placeRatio in shareRatio, then find a placement fit it.
+              shareRatio.reduce(function (temp2, placeRatio, index) {
+                // find all placement fit with area place
+                var places = allPlacement.filter(function (place) {
+                  return getNumberOfParts(_this2.zoneType === 'right' ? place.data.height : place.data.width, true) === placeRatio && place.data.revenueType !== 'pr' && place.index === index;
+                });
+
+                console.log('placeTest', getNumberOfParts(_this2.zoneType === 'right' ? allPlacement[0].data.height : allPlacement[0].data.width, true));
+                // filter place with relative keyword
+                var placesWithKeyword = [];
+                if (arrayRelativeKeyword.length > 0) {
+                  placesWithKeyword = filterPlaceWithKeyword(places, arrayRelativeKeyword);
+                  if (placesWithKeyword.length > 0) {
+                    isRelative = true;
+                    places = placesWithKeyword;
+                  }
+                }
+
+                // if don't have any places fit in area => return empty share
+                if (places.length === 0) {
+                  share = [];
+                  return 0;
+                } else {
+                  // eslint-disable-line no-else-return
+                  // choose random a placement which are collected on above
+                  var randomIndex = parseInt(Math.floor(Math.random() * places.length), 10);
+                  var place = places[randomIndex];
+
+                  share.push(place.data);
+                }
+                console.log('shareTest', share);
+                return 0;
+              }, 0);
+
+              // if share available => insert monopoly places
+              if (share.length !== 0) {
+                // push (all places have type === placementType) into share.
+                var SumArea = share.reduce(function (acc, item) {
+                  return acc + getNumberOfParts(_this2.zoneType === 'right' ? item.height : item.width, true);
+                }, 0);
+                var Free = getNumberOfParts(_this2.zoneType === 'right' ? _this2.height : _this2.width) - SumArea;
+                console.log('freeTest', Free);
+                if (Free === 0 && relativeKeyword !== '' && isRelative) {
+                  shares.push(share);
+                  isRelative = false;
+                  share = [];
+                }
+                if (Free === 0) {
+                  shares.push(share);
+                  isRelative = false;
+                  share = [];
+                }
+              }
+
+              return '';
+            }, 0);
+          }
+          shareTemplate.weight = 100 / shares.length;
+          for (var _i3 = 0; _i3 < shares.length; _i3 += 1) {
+            shareTemplate.id = 'DS-' + _i3;
+            shareTemplate.placements = shares[_i3];
+            var shareData = new _Share2.default(shareTemplate);
+            shareDatas.push(shareData);
+          }
+          console.log('cpmmm');
+        };
+
+        if (placementType !== 'cpm') {
+          // get all places have type === placementType
+          var monopolyPlaces = allPlacement.filter(function (y) {
+            return y.data.AdsType.revenueType === placementType;
+          });
+          console.log('monopolyPlaces2', monopolyPlaces);
+          if (monopolyPlaces.length > 0) {
+            if (placementType === 'pr') {
+              createShareByPlaceMonopolies(monopolyPlaces);
+              return shareDatas;
+            }
+            // collect placements which share the place order with monopoly places ('cpd').
+            var shareWith = [];
+            monopolyPlaces.reduce(function (acc, monopolyPlace) {
+              return allPlace.reduce(function (acc2, place) {
+                if (place.index === monopolyPlace.index && place.data.revenueType !== monopolyPlace.data.revenueType) {
+                  shareWith.push(place);
+                }
+                return 0;
+              }, 0);
+            }, 0);
+            // filter keyword
+            var shareWithKeyword = [];
+            if (arrayRelativeKeyword.length > 0) {
+              shareWithKeyword = filterPlaceWithKeyword(shareWith, arrayRelativeKeyword);
+              if (shareWithKeyword.length > 0) {
+                shareWith = shareWithKeyword;
+              }
+            }
+
+            // mix the monopoly share place with other place. array: monopolyPlace - lib: otherPlace
+            var createMonopolyPlacesWithShare = function createMonopolyPlacesWithShare(array, lib) {
+              var res = [];
+              array.reduce(function (acc1, ArrayItem, index1, array1) {
+                var replace = function replace(library, index2, arrTemp) {
+                  var arrayTemp = arrTemp.map(function (item) {
+                    return item;
+                  });
+                  library.reduce(function (acc2, item) {
+                    if (item.index === array1[index2].index) {
+                      arrayTemp.splice(index2, 1, item);
+                      res.push(arrayTemp);
+                      if (index2 < arrTemp.length - 1) {
+                        replace(library, index2 + 1, arrayTemp);
+                      }
+                    }
+                    return 0;
+                  }, 0);
+                };
+                replace(lib, index1, array1);
+                return 0;
+              }, 0);
+              res.push(array);
+              return res;
+            };
+            var combinationMonopolyPlaces = [];
+            // const numberOfCombination = monopolyPlaces.length;
+            var monopolyPlacesWithShare = createMonopolyPlacesWithShare(monopolyPlaces, shareWith);
+            // console.log('monopolyPlaces', monopolyPlaces);
+            console.log('monopolyPlacesWithShare', monopolyPlacesWithShare);
+            // variable "conputeAll" to compute all cases combination.
+            var computeAll = true;
+            if (computeAll) {
+              // can use function combinations (1-n combination n)
+              // instead of k_combination (k Combination n) for compute all cases.
+              for (var i = 0; i < monopolyPlacesWithShare.length; i += 1) {
+                combinationMonopolyPlaces = combinationMonopolyPlaces.concat(_vendor.util.combinations(monopolyPlacesWithShare[i]).filter(function (item) {
+                  return item.reduce(function (acc, item2) {
+                    return acc + item2.data.PlacementArea < _this2.ZoneArea;
+                  }, 0);
+                }));
+              }
+            } else {
+              for (var _i4 = 0; _i4 < monopolyPlacesWithShare.length; _i4 += 1) {
+                combinationMonopolyPlaces = combinationMonopolyPlaces.concat(_vendor.util.kCombinations(monopolyPlacesWithShare[_i4], 1).filter(function (item) {
+                  return item.reduce(function (acc, item2) {
+                    return acc + item2.data.PlacementArea < _this2.ZoneArea;
+                  }, 0);
+                }));
+              }
+            }
+            var numberOfMonopoly = shareConstruct.reduce(function (acc, item) {
+              return item.type === 'cpd' ? acc + 1 : acc + 0;
+            }, 0);
+            combinationMonopolyPlaces = combinationMonopolyPlaces.filter(function (item) {
+              return item.length >= numberOfMonopoly && item.reduce(function (acc, item2, index) {
+                if (index === 0) {
+                  return item2.data.revenueType === shareConstruct[item2.index].type;
+                }
+                return acc && item2.data.revenueType === shareConstruct[item2.index].type;
+              }, 0);
+            });
+            console.log('combination2', combinationMonopolyPlaces);
+            combinationMonopolyPlaces.reduce(function (acc, item) {
+              return createShareByPlaceMonopolies(item);
+            }, 0);
+
+            return shareDatas;
+          }
+        } else {
+          console.log('shareData', placementType, shareDatas, _this2.zoneType);
+          createShareByPlaceCpm();
+        }
+        return shareDatas;
+      };
+      var shareConstruct = [];
+      // if cpdShare take all share percent in a place order -> filter
+
+      var _loop = function _loop(i) {
+        var isPr = allPlace.filter(function (place) {
+          return place.index === i && place.data.revenueType === 'pr';
+        }).length > 0;
+        var totalCPDSharePercent = allPlace.filter(function (place) {
+          return place.index === i && place.data.revenueType === 'cpd';
+        }).reduce(function (acc, place) {
+          return acc + place.data.cpdPercent * place.data.PlacementArea;
+        }, 0);
+        if (isPr) {
+          shareConstruct.push([{ type: 'pr', weight: 100 }, { type: 'cpd', weight: 0 }, { type: 'cpm', weight: 0 }]);
+        } else {
+          shareConstruct.push([{ type: 'pr', weight: 0 }, { type: 'cpd', weight: totalCPDSharePercent }, { type: 'cpm', weight: 100 - totalCPDSharePercent }]);
+          console.log('totalCPDSharePercent', totalCPDSharePercent, i);
+        }
+      };
+
+      for (var i = 0; i < numberOfPlaceInShare; i += 1) {
+        _loop(i);
+      }
+
+      var cookie = _vendor.adsStorage.getStorage('_cpt');
+      var zoneCookie = _vendor.adsStorage.subCookie(cookie, this.id + ':', 0);
+      zoneCookie = zoneCookie.slice(zoneCookie.indexOf(':') + 1);
+      var ShareRendered = zoneCookie.split('|');
+      var activeRevenue = function activeRevenue(allRevenueType) {
+        var randomNumber = Math.random() * 100;
+
+        var ratio = allRevenueType.reduce(function (acc, revenueType) {
+          return revenueType.weight + acc;
+        }, 0) / 100;
+
+        var res = allRevenueType.reduce(function (acc, revenueType) {
+          var nextRange = acc + revenueType.weight / ratio;
+
+          if ((typeof acc === 'undefined' ? 'undefined' : (0, _typeof3.default)(acc)) === 'object') {
+            return acc;
+          }
+
+          if (randomNumber >= acc && randomNumber < nextRange) {
+            return revenueType;
+          }
+
+          return nextRange;
+        }, 0);
+        return res;
+      };
+      // build construct of current share.
+      var lastThreeShare = ShareRendered.slice(Math.max(ShareRendered.length - 3, 1));
+      // console.log('lastThreeShare', lastThreeShare);
+      var numberOfChannel = _vendor.util.uniqueItem(lastThreeShare.map(function (item) {
+        return item.split(')(')[0];
+      })).length;
+      console.log('domain', numberOfChannel);
+      if (numberOfChannel > 1) {
+        lastThreeShare = [];
+        var domain = _vendor.util.getThisChannel(_vendor.term.getCurrentDomain('Site:Pageurl')).slice(0, 2).join('.');
+        cookie = ('' + cookie).replace(zoneCookie, '');
+        _vendor.adsStorage.setStorage('_cpt', cookie, '', '/', domain);
+      }
+      var buildShareConstruct = [];
+
+      var _loop2 = function _loop2(i) {
+        if (shareConstruct[i][0].weight === 100) {
+          buildShareConstruct.push(shareConstruct[i][0]);
+        } else {
+          var lastPlaceType = [];
+          lastThreeShare.reduce(function (acc, share) {
+            var shareTemp = share.split('][');
+            shareTemp.reduce(function (acc2, item, index) {
+              if (index === i) {
+                lastPlaceType.push(item.split(')(')[2]);
+              }
+              return 0;
+            }, 0);
+            return 0;
+          }, 0);
+          console.log('lastPlaceType', lastPlaceType, i);
+
+          var cpdPercent = shareConstruct[i][1].weight;
+          var cpdAppear = lastPlaceType.reduce(function (acc, place) {
+            return place.type === 'cpd' ? acc + 1 : acc + 0;
+          }, 0);
+          if (cpdPercent > 0 && cpdPercent <= 100 / 3) {
+            if (cpdAppear === 1 && lastPlaceType.length > 1) {
+              shareConstruct[i].splice(1, 1);
+            }
+          } else if (cpdPercent > 100 / 3 && cpdPercent <= 200 / 3) {
+            if (cpdAppear === 2 && lastPlaceType.length > 2) {
+              shareConstruct[i].splice(1, 1);
+            }
+          }
+          var activeType = activeRevenue(shareConstruct[i]);
+          buildShareConstruct.push(activeType);
+        }
+      };
+
+      for (var i = 0; i < numberOfPlaceInShare; i += 1) {
+        _loop2(i);
+      }
+      console.log('buildShareConstruct', buildShareConstruct);
+      var pr = computeShareWithPlacementType2(allPlace, 'pr', buildShareConstruct);
+      // const testPR = computeShareWithPlacementType2(allPlace, 'pr', buildShareConstruct);
+      // console.log('testPR', testPR);
+      if (pr.length > 0) {
+        console.log('prShare', pr);
+        return pr;
+      }
+      var cpdShare = computeShareWithPlacementType2(allPlace, 'cpd', buildShareConstruct);
+      // const testCPD = computeShareWithPlacementType(allPlace, 'cpd', buildShareConstruct);
+      // console.log('testCPD', computeShareWithPlacementType);
+      if (cpdShare.length > 0) {
+        var _loop3 = function _loop3(i) {
+          if (100 - shareConstruct[i][0].weight <= 0) {
+            cpdShare = cpdShare.filter(function (share) {
+              return share.placements[i].revenueType === 'cpd';
+            });
+          }
+        };
+
+        for (var i = 0; i < numberOfPlaceInShare; i += 1) {
+          _loop3(i);
+        }
+        console.log('cpdShare', cpdShare);
+        return cpdShare;
+      }
+      var cpmShare = computeShareWithPlacementType2(allPlace, 'cpm', buildShareConstruct);
+      console.log('cpmShare', cpmShare);
+      if (cpmShare.length > 0) {
+        return cpmShare;
+      }
+      return allShare;
+    }
 
     /**
      * Get a active share randomly by its weight
      * @return {Share}
      */
-    value: function activeShare() {
+
+  }, {
+    key: 'activeShare',
+    value: function activeShare(relativeKeyword) {
+      var allShare = this.filterShareDynamic(relativeKeyword);
       var randomNumber = Math.random() * 100;
-      var ratio = this.allShares.reduce(function (tmp, share) {
+      var ratio = allShare.reduce(function (tmp, share) {
+        if (share.weight === undefined) {
+          share.weight = 100 / allShare.length; // eslint-disable-line
+        }
         return share.weight + tmp;
       }, 0) / 100;
 
-      var res = this.allShares.reduce(function (range, share) {
+      var res = allShare.reduce(function (range, share) {
         var nextRange = range + share.weight / ratio;
 
         if ((typeof range === 'undefined' ? 'undefined' : (0, _typeof3.default)(range)) === 'object') {
@@ -12105,7 +13159,55 @@ var Zone = function (_Entity) {
 
         return nextRange;
       }, 0);
-      // console.log('current share:', res);
+      // if share lack of place, it'll fill default place into share.
+      // res = util.fixShare(res);
+      // clear cookie _cpt
+      var domain = _vendor.util.getThisChannel(_vendor.term.getCurrentDomain('Site:Pageurl')).slice(0, 2).join('.');
+      var cookie = _vendor.adsStorage.getStorage('_cpt');
+      var zoneCookie = _vendor.adsStorage.subCookie(cookie, this.id + ':', 0);
+      zoneCookie = zoneCookie.slice(zoneCookie.indexOf(':') + 1);
+      var ShareRendered = zoneCookie.split('|');
+      var numberOfChannel = _vendor.util.uniqueItem(ShareRendered.slice(Math.max(ShareRendered.length - 3, 1)).map(function (item) {
+        return item.split(')(')[0];
+      })).length;
+      if (numberOfChannel > 1 || ShareRendered.length > 50) {
+        cookie = ('' + cookie).replace(zoneCookie, '');
+        _vendor.adsStorage.setStorage('_cpt', cookie, '', '/', domain);
+      }
+      console.log('current share:', res);
+      console.log('current Weight', res.weight / ratio);
+      // const isFixHeight = res.placements.reduce((acc, place, index1) => {
+      //   if (index1 === 0) {
+      //     place.allBanners.reduce((acc2, banner, index2) => {
+      //       if (index2 === 0) {
+      //         return ((banner.bannerType.isInputData !== undefined &&
+      //         banner.bannerType.isInputData) ||
+      //         (!(banner.bannerType.isInputData !== undefined &&
+      //         banner.bannerType.isInputData) &&
+      //         banner.isIFrame));
+      //       }
+      //       return acc2 && ((banner.bannerType.isInputData !== undefined &&
+      //         banner.bannerType.isInputData) ||
+      //         (!(banner.bannerType.isInputData !== undefined &&
+      //         banner.bannerType.isInputData) &&
+      //         banner.isIFrame));
+      //     }, 0);
+      //   }
+      //   return acc && place.allBanners.reduce((acc2, banner, index2) => {
+      //     if (index2 === 0) {
+      //       return ((banner.bannerType.isInputData !== undefined &&
+      //       banner.bannerType.isInputData) ||
+      //         (!(banner.bannerType.isInputData !== undefined &&
+      //         banner.bannerType.isInputData) &&
+      //         banner.isIFrame));
+      //     }
+      //     return acc2 && ((banner.bannerType.isInputData !== undefined &&
+      //       banner.bannerType.isInputData) ||
+      //       (!(banner.bannerType.isInputData !== undefined &&
+      //       banner.bannerType.isInputData) &&
+      //       banner.isIFrame));
+      //   }, 0);
+      // }, 0);
       return res;
     }
 
@@ -12120,11 +13222,6 @@ var Zone = function (_Entity) {
       var activeShareModel = this.activeShare();
       return activeShareModel.activePlacements();
     }
-
-    /**
-     *
-     * */
-
   }, {
     key: 'allShares',
     get: function get() {
@@ -12136,6 +13233,14 @@ var Zone = function (_Entity) {
     key: 'ZoneArea',
     get: function get() {
       return _vendor.util.convertArea(this.height, this.width);
+    }
+  }, {
+    key: 'zoneType',
+    get: function get() {
+      if (this.height >= 257 && this.width < 600 && this.width > 160) {
+        return 'right';
+      }
+      return 'top';
     }
   }, {
     key: 'filterShare',
@@ -12228,109 +13333,6 @@ var Zone = function (_Entity) {
       // console.log(allShare);
       return allShare;
     }
-  }, {
-    key: 'filterShareDynamic',
-    get: function get() {
-      var allShare = this.allShares;
-      var allPlace = [];
-      this.allShares.reduce(function (temp, share) {
-        return allPlace.push(share.allPlacements);
-      }, 0);
-      allPlace = _vendor.util.flatten(allPlace);
-      // console.log('all Place', allPlace);
-      var shareTemplate = {
-        id: 'DS',
-        name: 'Dynamic Share',
-        html: '<div class="hello"></div>',
-        css: '.arf-placement{display:inline-block;margin-left:50px;}',
-        outputCss: '',
-        width: this.width,
-        height: this.height,
-        classes: '',
-        weight: 0,
-        type: 'multiple',
-        description: 'Share ' + this.width + 'x' + this.height,
-        zoneId: this.id,
-        placements: []
-      };
-      var shares = [];
-      var shareDatas = [];
-
-      // get pr places
-      var prPlaces = [];
-      for (var j = 0; j < allShare.length; j += 1) {
-        var places = allShare[j].activePlacements();
-        prPlaces = places.filter(function (y) {
-          return y.AdsType === 'pr';
-        });
-        if (prPlaces.length > 0) {
-          break;
-        }
-      }
-
-      // Create Share : S(zone) - S(pr) = Sfree
-      var SumPrArea = prPlaces.reduce(function (temp, item) {
-        return temp + item.PlacementArea;
-      }, 0);
-      var FreeArea = this.ZoneArea - SumPrArea;
-      // console.log('FreeArea', FreeArea);
-
-      for (var i = 1; i <= FreeArea; i += 1) {
-        // console.log('i', i);
-        // divide share base on free area and number of part.
-        var shareRatios = _vendor.util.ComputeShare(FreeArea, i);
-        // console.log('shareRatios', shareRatios);
-        // Browse each shareRatio on above and create a share for it.
-        shareRatios.reduce(function (temp, shareRatio) {
-          // console.log('shareRatio', shareRatio);
-          // this variable to store place which is choose bellow
-          var share = [];
-          shareRatio.reduce(function (temp2, placeRatio) {
-            // console.log('placeRatio', placeRatio);
-            // find all place fit in area place
-            var places = allPlace.filter(function (place) {
-              return place.PlacementArea === placeRatio;
-            });
-            // console.log(`place area ${placeRatio}-`, places);
-            // if don't have any places fit in area => return empty share
-            if (places.length === 0) {
-              share = [];
-            } else {
-              var randomIndex = parseInt(Math.random() * places.length, 10);
-              randomIndex = randomIndex > places.length ? places.length : randomIndex;
-              var place = places[randomIndex];
-              // console.log('random place', place);
-              share.push(place);
-            }
-
-            return '';
-          }, 0);
-          if (share.length !== 0) {
-            // push pr place into share.
-            prPlaces.reduce(function (x, y) {
-              return share.push(y);
-            }, 0);
-            // console.log('shareBuild', share);
-            shares.push(share);
-            share = [];
-          }
-
-          return '';
-        }, 0);
-      }
-      // console.log('shares', shares);
-      shareTemplate.weight = 100 / shares.length;
-      for (var _i = 0; _i < shares.length; _i += 1) {
-        shareTemplate.id = shareTemplate.id + '-' + _i;
-        shareTemplate.placements = shares[_i];
-        var shareData = new _Share2.default(shareTemplate);
-        // console.log('shareData', shareData);
-        shareDatas.push(shareData);
-      }
-
-      // console.log('shareDatas', shareDatas);
-      return shareDatas;
-    }
   }]);
   return Zone;
 }(_Entity3.default); /**
@@ -12363,7 +13365,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var adsStorage = {
   lcStorage: {
     timestamp: 'timestamp_',
-    get_exprises: function get_exprises(cookie, type, start, endkey) {
+    getExprises: function getExprises(cookie, type, start, endkey) {
       var cookietmp = '' + cookie;
       var cstart = cookietmp.indexOf(type, start);
       var cookLen = cookietmp.length - 1;
@@ -12376,7 +13378,7 @@ var adsStorage = {
       }
       return '';
     },
-    set_item: function set_item(key, value, exprises) {
+    setItem: function setItem(key, value, exprises) {
       var endchar = '';
       var date = new Date();
       var time = date.getTime();
@@ -12392,7 +13394,7 @@ var adsStorage = {
       } else {
         endchar = ',';
       }
-      var strTimeStamp = this.get_exprises(value, timestamp, 0, endchar);
+      var strTimeStamp = this.getExprises(value, timestamp, 0, endchar);
       var valuetmp = value;
       if (strTimeStamp === '') {
         valuetmp += timestamp + time.toString() + endchar;
@@ -12401,7 +13403,7 @@ var adsStorage = {
       }
       localStorage.setItem(key, valuetmp);
     },
-    get_item: function get_item(key, chkTime) {
+    getItem: function getItem(key, chkTime) {
       var a = localStorage.getItem(key);
       var endchar = '';
       var date = new Date();
@@ -12414,7 +13416,7 @@ var adsStorage = {
       } else {
         endchar = ',';
       }
-      var strTimeStamp = this.get_exprises(a, timestamp, 0, endchar);
+      var strTimeStamp = this.getExprises(a, timestamp, 0, endchar);
       strTimeStamp = strTimeStamp.replace(timestamp, '');
       if (strTimeStamp === '' || isNaN(parseInt(strTimeStamp, 10)) || parseInt(strTimeStamp, 10) < time) {
         return '';
@@ -12425,7 +13427,7 @@ var adsStorage = {
       }
       return a;
     },
-    remove_item: function remove_item(key) {
+    removeItem: function removeItem(key) {
       localStorage.removeItem(key);
     },
 
@@ -12436,7 +13438,7 @@ var adsStorage = {
   },
   setStorage: function setStorage(name, value, expires, path, domain, secure) {
     if (window.admislocalStorage) {
-      this.lcStorage.set_item(name, value, expires);
+      this.lcStorage.setItem(name, value, expires);
       if (name === '__R' || name === '__RC') {
         this.setCookie(name, value, expires, path, domain, secure);
       }
@@ -12449,7 +13451,7 @@ var adsStorage = {
       if (name === '__R' || name === '__RC') {
         return this.getCookie(name);
       }
-      return this.lcStorage.get_item(name);
+      return this.lcStorage.getItem(name);
     }
     return this.getCookie(name);
   },
@@ -12477,8 +13479,8 @@ var adsStorage = {
     }
 
     (0, _keys2.default)(s).reduce(addtos, 0);
-    document.cookie = r.join(':');
     var res = secure && r.push('secure');
+    document.cookie = r.join(':');
     return res, document.cookie, true;
   },
   getCookie: function getCookie(cname) {
@@ -12572,11 +13574,22 @@ Object.defineProperty(exports, "__esModule", {
 
 var term = {
   // get the path (admChannel or pageUrl) to check
-  getPath2Check: function getPath2Check(type) {
-    if (typeof _ADM_Channel !== 'undefined' && _ADM_Channel !== '') {
+  getPath2Check: function getPath2Check(type, variableName) {
+    var globalVariable = eval('typeof (' + variableName + ') !== \'undefined\' && ' + variableName + ' !== \'\'') ? eval(variableName) : undefined; // eslint-disable-line no-eval
+    if (typeof globalVariable !== 'undefined' && globalVariable !== '') {
       // eslint-disable-line no-undef,camelcase
-      return decodeURIComponent(_ADM_Channel); // eslint-disable-line no-undef,camelcase
+      return decodeURIComponent('' + globalVariable); // eslint-disable-line no-undef,camelcase
     }
+    var url = document.URL;
+    var ref = document.referrer;
+    var http = type === 'Site:Pageurl' ? url.replace(/\?i=([0-9]+)&bz=([0-9]+)&z=([0-9]+)#([0-9_0-9]+)/g, '') : ref.replace(/\?i=([0-9]+)&bz=([0-9]+)&z=([0-9]+)#([0-9_0-9]+)/g, '');
+    var arrUrlReg = http.match(/([^|]+)/i);
+    if (arrUrlReg) {
+      http = '' + arrUrlReg[0];
+    }
+    return http.toLowerCase();
+  },
+  getCurrentDomain: function getCurrentDomain(type) {
     var url = document.URL;
     var ref = document.referrer;
     var http = type === 'Site:Pageurl' ? url.replace(/\?i=([0-9]+)&bz=([0-9]+)&z=([0-9]+)#([0-9_0-9]+)/g, '') : ref.replace(/\?i=([0-9]+)&bz=([0-9]+)&z=([0-9]+)#([0-9_0-9]+)/g, '');
@@ -12596,9 +13609,9 @@ var term = {
       case '!=':
         return path2check !== data;
       case '=~':
-        return this.stripos(path2check, data, 0);
+        return this.stringPosition(path2check, data, 0);
       case '!~':
-        return !this.stripos(path2check, data, 0);
+        return !this.stringPosition(path2check, data, 0);
       case '=x':
         {
           var reg = new RegExp(data);
@@ -12637,7 +13650,7 @@ var term = {
     }
     return false;
   },
-  stripos: function stripos(path, data, offset) {
+  stringPosition: function stringPosition(path, data, offset) {
     var haystack = ('' + path).toLowerCase();
     var needle = ('' + data).toLowerCase();
     return haystack.indexOf(needle, offset) !== -1;
@@ -12657,28 +13670,38 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _typeof2 = __webpack_require__(7);
+var _typeof2 = __webpack_require__(8);
 
 var _typeof3 = _interopRequireDefault(_typeof2);
 
+var _models = __webpack_require__(12);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-/**
- * Created by tlm on 14/03/2017.
- */
 var util = {
+  getThisChannel: function getThisChannel(url) {
+    var path = url;
+    var Channel = void 0;
+    if (path.indexOf('http://') !== -1) {
+      Channel = path.substring(7).split('/');
+    } else {
+      Channel = path.split('/');
+      Channel.pop();
+    }
+    return Channel;
+  },
   convertArea: function convertArea(height, width) {
-    if (width === 1160) {
+    if ((width === 1160 || width === 1158) && height === 90) {
       return 2;
     }
-    if (height === 560) {
+    if (width === 336 && height === 560) {
       return 4;
     }
     if (width === 336 && height <= 560) {
       return height / 140;
     }
     if (height === 90 && width <= 1160) {
-      return width / 468;
+      return 1;
     }
     return 1;
   },
@@ -12708,10 +13731,23 @@ var util = {
 
     throw new Error('Unable to copy array!.');
   },
+  uniqueItem: function uniqueItem(arr) {
+    var n = {};
+    var r = [];
+    for (var i = 0; i < arr.length; i += 1) {
+      if (!n[arr[i]]) {
+        n[arr[i]] = true;
+        r.push(arr[i]);
+      }
+    }
+    return r;
+  },
+
+
+  // permute item in array and return a array store permutations
   permuteArray: function permuteArray(array) {
     var permArr = [];
     var usedChars = [];
-
     var UniqueItem = function UniqueItem(arr) {
       var n = {};
       var r = [];
@@ -12723,8 +13759,7 @@ var util = {
       }
       return r;
     };
-
-    function permute(input) {
+    var permute = function permute(input) {
       var i = void 0;
       var ch = void 0;
       for (i = 0; i < input.length; i += 1) {
@@ -12738,10 +13773,12 @@ var util = {
         usedChars.pop();
       }
       return UniqueItem(permArr);
-    }
-
+    };
     return permute(array);
   },
+
+
+  // compute share base on area and number of place => return a array store these share-ratios
   ComputeShare: function ComputeShare(FreeAreaData, numberPlacesData) {
     // save output result
     var shares = [];
@@ -12809,7 +13846,7 @@ var util = {
   },
 
 
-  // filter Share base on Campaign place location
+  // filter Share base on Campaign place position
   filterShareAfterCompute: function filterShareAfterCompute(shares) {
     for (var _len = arguments.length, OrderArea = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
       OrderArea[_key - 1] = arguments[_key];
@@ -12829,6 +13866,7 @@ var util = {
     }
     return sharesTemp;
   },
+
 
   // convert location value (1->101) to location name
   convertLocation: function convertLocation(locationValue) {
@@ -12905,6 +13943,7 @@ var util = {
       68: 'Vĩnh Long',
       101: 'Nước ngoài'
     };
+    // convert vietnamese sign to vietnamese no sign and space to '-'
     var convertString = function convertString(string) {
       var str = string;
       str = str.toLowerCase();
@@ -12916,7 +13955,7 @@ var util = {
       str = str.replace(/ỳ|ý|ỵ|ỷ|ỹ/g, 'y');
       str = str.replace(/đ/g, 'd');
       str = str.replace(/\W+/g, ' ');
-      str = str.replace(/\s/g, '');
+      str = str.replace(/\s/g, '-');
       return str;
     };
     if ([1, 2, 3].indexOf(locationValue) !== -1) {
@@ -12941,9 +13980,468 @@ var util = {
 
     var detail = LocationDictionnary[locationValue];
     return { R: detail, RC: detail };
-  }
-};
+  },
+  getDefaultBanner: function getDefaultBanner(width, height) {
+    var defaultBanner = [{
+      id: 'f1d78bd4-06fc-4c99-9611-c03a1d21506e',
+      name: 'Banner Default 336 * 140',
+      html: "<script> (function() {var admid = 'abc';function admGetUrlCk() {return '';}var __admLink = 'http://dantri.com.vn/';var doc = document, url = __admLink, ua = navigator.userAgent + '';var videourl = 'http://adi.admicro.vn/adt/cpc/cpm7k/html/upload/2016/10/ariston_1160x90/1160x90.html';var imageurl = 'https://s27.postimg.org/o6faj2ar7/right_336_*_140.jpg';var imgwidth = 336;var imgheight = 140;var html = '<div style=\"position:relative;\">';if (ua.indexOf('Android') != -1 || ua.indexOf('iPad') != -1 || ua.indexOf('iPhone') != -1) {html += ('<img src=\"' + imageurl + '\" border=\"0\" /><a href=\"' + url + '\" target=\"_blank\" style=\"position:absolute; top:0; left:0; width:' + imgwidth + 'px; height:' + imgheight + 'px; display:block;z-index:9999;\"><span></span></a>')} else {html += ('<img src=\"' + imageurl + '\" border=\"0\" /><a href=\"' + url + '\" target=\"_blank\" style=\"position:absolute; top:0; left:0; width:' + imgwidth + 'px; height:' + imgheight + 'px; display:block;z-index:9999;\"><span></span></a>')}html += '</div>';doc.write(html);})();</script>",
+      width: 336,
+      height: 140,
+      keyword: 'dantri',
+      weight: 100,
+      description: 'Banner Default 336 * 140',
+      imageUrl: '',
+      url: '',
+      target: '',
+      isIFrame: true,
+      isCountView: true,
+      isFixIE: false,
+      isDefault: false,
+      isRelative: false
+    }, {
+      id: 'a76c6e2f-4afc-4598-908d-395a904a2114',
+      name: 'Default Banner 336 x 420',
+      html: "<script> (function() {var admid = 'abc';function admGetUrlCk() {return '';}var __admLink = 'http://dantri.com.vn/';var doc = document, url = __admLink, ua = navigator.userAgent + '';var videourl = 'http://adi.admicro.vn/adt/cpc/cpm7k/html/upload/2016/10/ariston_1160x90/1160x90.html';var imageurl = 'https://s27.postimg.org/41lqdlgxf/right_336*420.jpg';var imgwidth = 336;var imgheight = 420;var html = '<div style=\"position:relative;\">';if (ua.indexOf('Android') != -1 || ua.indexOf('iPad') != -1 || ua.indexOf('iPhone') != -1) {html += ('<img src=\"' + imageurl + '\" border=\"0\" /><a href=\"' + url + '\" target=\"_blank\" style=\"position:absolute; top:0; left:0; width:' + imgwidth + 'px; height:' + imgheight + 'px; display:block;z-index:9999;\"><span></span></a>')} else {html += ('<img src=\"' + imageurl + '\" border=\"0\" /><a href=\"' + url + '\" target=\"_blank\" style=\"position:absolute; top:0; left:0; width:' + imgwidth + 'px; height:' + imgheight + 'px; display:block;z-index:9999;\"><span></span></a>')}html += '</div>';doc.write(html);})();</script>",
+      width: 336,
+      height: 420,
+      keyword: 'datri',
+      weight: 100,
+      description: 'qasd',
+      imageUrl: '',
+      url: '',
+      target: '',
+      isIFrame: true,
+      isCountView: true,
+      isFixIE: false,
+      isDefault: false,
+      isRelative: false
+    }, {
+      id: 'ac509192-f144-4db7-8fae-0554103884ee',
+      name: 'Default Banner 336 x 560',
+      html: "<script> (function() {var admid = 'abc';function admGetUrlCk() {return '';}var __admLink = 'http://dantri.com.vn/';var doc = document, url = __admLink, ua = navigator.userAgent + '';var videourl = 'http://adi.admicro.vn/adt/cpc/cpm7k/html/upload/2016/10/ariston_1160x90/1160x90.html';var imageurl = 'https://s27.postimg.org/qrkv6l04z/right_468_*_560.jpg';var imgwidth = 336;var imgheight = 560;var html = '<div style=\"position:relative;\">';if (ua.indexOf('Android') != -1 || ua.indexOf('iPad') != -1 || ua.indexOf('iPhone') != -1) {html += ('<img src=\"' + imageurl + '\" border=\"0\" /><a href=\"' + url + '\" target=\"_blank\" style=\"position:absolute; top:0; left:0; width:' + imgwidth + 'px; height:' + imgheight + 'px; display:block;z-index:9999;\"><span></span></a>')} else {html += ('<img src=\"' + imageurl + '\" border=\"0\" /><a href=\"' + url + '\" target=\"_blank\" style=\"position:absolute; top:0; left:0; width:' + imgwidth + 'px; height:' + imgheight + 'px; display:block;z-index:9999;\"><span></span></a>')}html += '</div>';doc.write(html);})();</script>",
+      width: 336,
+      height: 560,
+      keyword: 'dantri',
+      weight: 100,
+      description: 'sdfsd',
+      imageUrl: '',
+      url: '',
+      target: '',
+      isIFrame: true,
+      isCountView: true,
+      isFixIE: false,
+      isDefault: false,
+      isRelative: false
 
+    }, {
+      id: 'e48beece-f9a3-4264-9d07-e9013c95b90b',
+      name: 'Banner Default 336 x 280',
+      html: "<script> (function() {var admid = 'abc';function admGetUrlCk() {return '';}var __admLink = 'http://dantri.com.vn/';var doc = document, url = __admLink, ua = navigator.userAgent + '';var videourl = 'http://adi.admicro.vn/adt/cpc/cpm7k/html/upload/2016/10/ariston_1160x90/1160x90.html';var imageurl = 'https://s27.postimg.org/rejrw3x0z/right_336*280.jpg';var imgwidth = 336;var imgheight = 280;var html = '<div style=\"position:relative;\">';if (ua.indexOf('Android') != -1 || ua.indexOf('iPad') != -1 || ua.indexOf('iPhone') != -1) {html += ('<img src=\"' + imageurl + '\" border=\"0\" /><a href=\"' + url + '\" target=\"_blank\" style=\"position:absolute; top:0; left:0; width:' + imgwidth + 'px; height:' + imgheight + 'px; display:block;z-index:9999;\"><span></span></a>')} else {html += ('<img src=\"' + imageurl + '\" border=\"0\" /><a href=\"' + url + '\" target=\"_blank\" style=\"position:absolute; top:0; left:0; width:' + imgwidth + 'px; height:' + imgheight + 'px; display:block;z-index:9999;\"><span></span></a>')}html += '</div>';doc.write(html);})();</script>",
+      width: 336,
+      height: 280,
+      keyword: 'dantri',
+      weight: 100,
+      description: 'asd',
+      imageUrl: '',
+      url: '',
+      target: '',
+      isIFrame: true,
+      isCountView: true,
+      isFixIE: false,
+      isDefault: false,
+      isRelative: false
+
+    }, {
+      id: '54cbaac6-a6e6-44f6-844e-f746b389d8db',
+      name: 'Banner Top Default 1160 x 90',
+      html: "<script> (function() {var admid = 'abc';function admGetUrlCk() {return '';}var __admLink = 'http://dantri.com.vn/';var doc = document, url = __admLink, ua = navigator.userAgent + '';var videourl = 'http://adi.admicro.vn/adt/cpc/cpm7k/html/upload/2016/10/ariston_1160x90/1160x90.html';var imageurl = 'https://s27.postimg.org/57pqce583/top_1160_*_90.jpg';var imgwidth = 1160;var imgheight = 90;var html = '<div style=\"position:relative;\">';if (ua.indexOf('Android') != -1 || ua.indexOf('iPad') != -1 || ua.indexOf('iPhone') != -1) {html += ('<img src=\"' + imageurl + '\" border=\"0\" /><a href=\"' + url + '\" target=\"_blank\" style=\"position:absolute; top:0; left:0; width:' + imgwidth + 'px; height:' + imgheight + 'px; display:block;z-index:9999;\"><span></span></a>')} else {html += ('<img src=\"' + imageurl + '\" border=\"0\" /><a href=\"' + url + '\" target=\"_blank\" style=\"position:absolute; top:0; left:0; width:' + imgwidth + 'px; height:' + imgheight + 'px; display:block;z-index:9999;\"><span></span></a>')}html += '</div>';doc.write(html);})();</script>",
+      width: 1160,
+      height: 90,
+      keyword: 'santri',
+      weight: 100,
+      description: 'asd',
+      imageUrl: '',
+      url: '',
+      target: '',
+      isIFrame: true,
+      isCountView: true,
+      isFixIE: false,
+      isDefault: false,
+      isRelative: false
+    }, {
+      id: '53d5a00b-ac63-4910-9173-9156977ec876',
+      name: 'Banner Top Default 468*90',
+      html: "<script> (function() {var admid = 'abc';function admGetUrlCk() {return '';}var __admLink = 'http://dantri.com.vn/';var doc = document, url = __admLink, ua = navigator.userAgent + '';var videourl = 'http://adi.admicro.vn/adt/cpc/cpm7k/html/upload/2016/10/ariston_1160x90/1160x90.html';var imageurl = 'https://s27.postimg.org/7nrjq8nar/top_468*90.jpg';var imgwidth = 468;var imgheight = 90;var html = '<div style=\"position:relative;\">';if (ua.indexOf('Android') != -1 || ua.indexOf('iPad') != -1 || ua.indexOf('iPhone') != -1) {html += ('<img src=\"' + imageurl + '\" border=\"0\" /><a href=\"' + url + '\" target=\"_blank\" style=\"position:absolute; top:0; left:0; width:' + imgwidth + 'px; height:' + imgheight + 'px; display:block;z-index:9999;\"><span></span></a>')} else {html += ('<img src=\"' + imageurl + '\" border=\"0\" /><a href=\"' + url + '\" target=\"_blank\" style=\"position:absolute; top:0; left:0; width:' + imgwidth + 'px; height:' + imgheight + 'px; display:block;z-index:9999;\"><span></span></a>')}html += '</div>';doc.write(html);})();</script>",
+      width: 468,
+      height: 90,
+      keyword: 'datri',
+      weight: 100,
+      description: 'asd',
+      imageUrl: '',
+      url: '',
+      target: '',
+      isIFrame: true,
+      isCountView: true,
+      isFixIE: false,
+      isDefault: false,
+      isRelative: false
+    }];
+    return defaultBanner.reduce(function (acc, item) {
+      if (item.width === width && item.height === height) return item;
+      return acc;
+    }, 0);
+  },
+
+
+  // insert default place if share lack places.
+  fixShare: function fixShare(share) {
+    var sumPlaceArea = share.allPlacements.reduce(function (acc, item) {
+      return acc + item.PlacementArea;
+    }, 0);
+    var freeArea = share.shareArea - sumPlaceArea;
+    // console.log('freeArea', freeArea);
+    if (freeArea > 0) {
+      console.log('placementFix');
+      var PlacementTemplate = {
+        id: '648334fb-63c8-4909-a406-fe3d68c952d9',
+        name: 'Placement RS2 336x140',
+        description: 'placement of Bong Da So',
+        width: 0,
+        height: 0,
+        weight: 25,
+        banners: []
+      };
+      var placementFix = new _models.Placement(PlacementTemplate);
+      var getType = function getType(width, height) {
+        if (width === 1160 && height === 90) {
+          return 'top';
+        }
+        if (width === 336 && height === 560) {
+          return 'right';
+        }
+        return '';
+      };
+      var convert = function convert(area, type) {
+        if (type === 'top') {
+          return {
+            width: area * 468,
+            height: 90
+          };
+        }
+        if (type === 'right') {
+          return {
+            width: 336,
+            height: area * 140
+          };
+        }
+        return {
+          width: 0,
+          height: 0
+        };
+      };
+      var type = getType(share.width, share.height);
+      console.log('type', type);
+      var freeSize = convert(freeArea, type);
+      console.log('freeSize', freeSize);
+      placementFix.id = 'placement-default';
+      placementFix.width = freeSize.width;
+      placementFix.height = freeSize.height;
+      console.log('placementFix', placementFix);
+      var bannerDefault = this.getDefaultBanner(freeSize.width, freeSize.height);
+      bannerDefault.weight = 100;
+      bannerDefault.width = placementFix.width;
+      bannerDefault.height = placementFix.height;
+      console.log('Banner default', bannerDefault);
+      placementFix.banners.push(new _models.Banner(bannerDefault));
+      share.placements.push(placementFix);
+    }
+    return share;
+  },
+
+
+  // compute factorial
+  factorial: function factorial(number) {
+    var factored = 1;
+    var compute = function compute(value) {
+      var n = value;
+      for (var i = n; i > 0; i -= 1) {
+        if (n > 170) {
+          return 'Hey! that is too big for my pea brain';
+        }
+
+        if (i === n) {
+          factored = i;
+        } else {
+          factored *= i;
+        }
+      }
+      return factored;
+    };
+    return compute(number);
+  },
+
+
+  // get result of combination : k of n elements.
+  Combination: function Combination(k, n) {
+    return this.factorial(n) / (this.factorial(k) * this.factorial(n - k));
+  },
+
+
+  // create these combinations : k of array set => collection into array
+  kCombinations: function kCombinations(set, k) {
+    var i = void 0;
+    var j = void 0;
+    var combs = void 0;
+    var head = void 0;
+    var tailcombs = void 0;
+
+    // There is no way to take e.g. sets of 5 elements from
+    // a set of 4.
+    if (k > set.length || k <= 0) {
+      return [];
+    }
+
+    // K-sized set has only one K-sized subset.
+    if (k === set.length) {
+      return [set];
+    }
+
+    // There is N 1-sized subsets in a N-sized set.
+    if (k === 1) {
+      combs = [];
+      for (i = 0; i < set.length; i += 1) {
+        combs.push([set[i]]);
+      }
+      return combs;
+    }
+
+    combs = [];
+    for (i = 0; i < set.length - k + 1; i += 1) {
+      // head is a list that includes only our current element.
+      head = set.slice(i, i + 1);
+      // We take smaller combinations from the subsequent elements
+      tailcombs = this.kCombinations(set.slice(i + 1), k - 1);
+      // For each (k-1)-combination we join it with the current
+      // and store it to the set of k-combinations.
+      for (j = 0; j < tailcombs.length; j += 1) {
+        combs.push(head.concat(tailcombs[j]));
+      }
+    }
+    return combs;
+  },
+
+
+  // create these combinations k-set.length of array set => collection into array
+  combinations: function combinations(set) {
+    var kCombs = void 0;
+    var combs = [];
+
+    // Calculate all non-empty k-combinations
+    for (var k = 1; k <= set.length; k += 1) {
+      kCombs = this.kCombinations(set, k);
+      for (var i = 0; i < kCombs.length; i += 1) {
+        combs.push(kCombs[i]);
+      }
+    }
+    return combs;
+  },
+
+
+  // check compete with places
+  isCompete: function isCompete(allPlacement, placeOrder) {
+    var count = 0;
+    allPlacement.filter(function (placement) {
+      return placement.index === placeOrder;
+    }).reduce(function (acc, placement) {
+      if (placement.data.AdsType.revenueType !== acc) {
+        count += 1;
+      }
+      return placement.data.AdsType.revenueType;
+    }, 0);
+    return count > 1;
+  },
+
+
+  // check compete with shares
+  isCompete2: function isCompete2(shares, placeOrder) {
+    var placeInShare = [];
+    shares.reduce(function (temp, share) {
+      return placeInShare = placeInShare.concat(share.allPlacements.map(function (item, index) {
+        return { data: item, index: index };
+      }));
+    }, 0);
+    return this.isCompete(placeInShare, placeOrder);
+  },
+  filterPlaceWithKeyword: function filterPlaceWithKeyword(places, arrRelativeKeyword) {
+    var placesWithKeyword = places.filter(function (place) {
+      return place.data.allBanners.reduce(function (acc1, banner) {
+        var bannerKeyword = banner.keyword.split(',').map(function (item) {
+          return item.replace(' ', '');
+        });
+        return arrRelativeKeyword.filter(function (key) {
+          return bannerKeyword.reduce(function (acc2, bannerKey, index2) {
+            return index2 === 0 ? bannerKey === key : acc2 || bannerKey === key;
+          }, 0);
+        }).length > 0;
+      }, 0);
+    });
+    return placesWithKeyword;
+  },
+  admLoadJs: function admLoadJs(urlLibrary, libName, callBack) {
+    // eslint-disable-line
+    var thisLib = document.getElementById('' + libName);
+    if (thisLib == null) {
+      var a = document.createElement('script');
+      a.id = '' + libName;
+      a.type = 'text/javascript';
+      a.src = urlLibrary;
+      a.onload = function () {
+        window.isLoadLib = true;
+        callBack();
+      };
+      a.onreadystatechange = function () {
+        a.readyState !== 4 && a.readyState !== 'complete' || callBack(); //eslint-disable-line
+      };
+      document.getElementsByTagName('head')[0].appendChild(a);
+    }
+  },
+  resizeIFrameToFitContent: function resizeIFrameToFitContent(iFrame) {
+    var temp = iFrame;
+    temp.width = iFrame.contentWindow.document.body.scrollWidth;
+    temp.height = iFrame.contentWindow.document.body.scrollHeight;
+    return temp;
+  },
+  admExecJs: function admExecJs(html, id) {
+    var _arguments = arguments;
+
+    var element = html;
+    var evlScript = [];
+    var script = [];
+
+    this.trim = function (str) {
+      var strTemp = str;
+      strTemp = str.replace(/^\s+/, '');
+      for (var i = str.length - 1; i >= 0; i -= 1) {
+        if (/\S/.test(str.charAt(i))) {
+          strTemp = str.substring(0, i + 1);
+          break;
+        }
+      }
+      return strTemp;
+    };
+
+    this.explode = function () {
+      // boc tach script
+      var b = html.match(/<(script)[^>]*>(.*?)<\/(script)>/gi);
+      if (b) {
+        var d = '';
+        for (var i = 0, len = b.length; i < len; i += 1) {
+          element = element.replace(b[i], '');
+          d = b[i].replace(/<(script)[^>]*>(.*?)<\/(script)>/gi, '$2');
+          if (this.trim(d) !== '') {
+            evlScript.push(this.trim(d));
+          }
+
+          var t = b[i].match(/src="([^]*)"/gi);
+          if (t) {
+            script.push(t[0].replace(/src="([^]*)"/gi, '$1'));
+          }
+        }
+      }
+    };
+
+    var callScript = this.getFileScript;
+    this.getFileScript = function (url) {
+      var a = document.createElement('script');
+      a.type = 'text/javascript';
+      a.async = true;
+      a.src = url;
+      var c = document.getElementsByTagName('script')[0];
+      var args = _arguments; // eslint-disable-line
+      if (args.length >= 2) {
+        var arrLength = args[1];
+        a.onload = function () {
+          var arr = arrLength;
+          var strUrl = arr[0];
+          arr.shift();
+          if (arr.length >= 1) {
+            callScript(strUrl, arr);
+          } else {
+            callScript(strUrl);
+          }
+        };
+      }
+      c.parentNode.insertBefore(a, c);
+    };
+
+    this.explode();
+
+    var id1 = document.getElementById(id);
+    if (arguments.length >= 3) {
+      if (id1) {
+        var strDiv = element.match(/id=[^]+/i);
+        if (strDiv) {
+          var strId = strDiv[0].replace(/id="|"/gi, '');
+          if (strId) {
+            id1.innerHTML = element;
+            var id2 = document.getElementById(strId);
+            if (id2) {
+              id2.setAttribute('rel', id);
+              var parentNode = id1.parentNode;
+              parentNode.replaceChild(id2, id1);
+            }
+          }
+        }
+      }
+    } else if (id1) {
+      id1.innerHTML = element;
+      window.setTimeout(function () {
+        id1.style.display = '';
+      }, 1000);
+    }
+
+    if (script.length > 0) {
+      if (script.length > 1) {
+        var arr = script;
+        var strUrl = script[0];
+        console.log(arr, strUrl);
+        arr.shift();
+        this.getFileScript(strUrl, arr);
+      } else {
+        this.getFileScript(script[0]);
+      }
+    }
+    if (evlScript.length > 0) {
+      for (var i = 0, len = evlScript.length; i < len; i += 1) {
+        eval(evlScript[i]); // eslint-disable-line
+      }
+    }
+  },
+  getCurrentBrowser: function getCurrentBrowser() {
+    var tem = void 0;
+    var M = void 0;
+    var ua = navigator.userAgent;
+    M = ua.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || [];
+    if (/trident/i.test(M[1])) {
+      tem = /\brv[ :]+(\d+)/g.exec(ua) || [];
+      return 'IE ' + (tem[1] || '');
+    }
+    if (M[1] === 'Chrome') {
+      tem = ua.match(/\b(OPR|Edge)\/(\d+)/);
+      if (tem != null) return tem.slice(1).join(' ').replace('OPR', 'Opera');
+    }
+    M = M[2] ? [M[1], M[2]] : [navigator.appName, navigator.appVersion, '-?'];
+    tem = ua.match(/version\/(\d+)/i);
+    if (tem != null) {
+      M.splice(1, 1, tem[1]);
+    }
+    var currentBrowser = M.join(' ').substring(0, M.join(' ').indexOf(' ')).toLowerCase();
+    return currentBrowser;
+  }
+}; /**
+    * Created by tlm on 14/03/2017.
+    */
 exports.default = util;
 
 /***/ }),
@@ -13072,7 +14570,7 @@ module.exports = function(){ /* empty */ };
 
 // false -> Array#indexOf
 // true  -> Array#includes
-var toIObject = __webpack_require__(5)
+var toIObject = __webpack_require__(6)
   , toLength  = __webpack_require__(99)
   , toIndex   = __webpack_require__(98);
 module.exports = function(IS_INCLUDES){
@@ -13097,7 +14595,7 @@ module.exports = function(IS_INCLUDES){
 /***/ (function(module, exports, __webpack_require__) {
 
 // all enumerable object keys, includes symbols
-var getKeys = __webpack_require__(15)
+var getKeys = __webpack_require__(17)
   , gOPS    = __webpack_require__(51)
   , pIE     = __webpack_require__(32);
 module.exports = function(it){
@@ -13150,7 +14648,7 @@ var create         = __webpack_require__(31)
   , IteratorPrototype = {};
 
 // 25.1.2.1.1 %IteratorPrototype%[@@iterator]()
-__webpack_require__(9)(IteratorPrototype, __webpack_require__(10)('iterator'), function(){ return this; });
+__webpack_require__(10)(IteratorPrototype, __webpack_require__(11)('iterator'), function(){ return this; });
 
 module.exports = function(Constructor, NAME, next){
   Constructor.prototype = create(IteratorPrototype, {next: descriptor(1, next)});
@@ -13169,8 +14667,8 @@ module.exports = function(done, value){
 /* 92 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var getKeys   = __webpack_require__(15)
-  , toIObject = __webpack_require__(5);
+var getKeys   = __webpack_require__(17)
+  , toIObject = __webpack_require__(6);
 module.exports = function(object, el){
   var O      = toIObject(object)
     , keys   = getKeys(O)
@@ -13185,14 +14683,14 @@ module.exports = function(object, el){
 /***/ (function(module, exports, __webpack_require__) {
 
 var META     = __webpack_require__(26)('meta')
-  , isObject = __webpack_require__(14)
-  , has      = __webpack_require__(3)
-  , setDesc  = __webpack_require__(4).f
+  , isObject = __webpack_require__(16)
+  , has      = __webpack_require__(4)
+  , setDesc  = __webpack_require__(5).f
   , id       = 0;
 var isExtensible = Object.isExtensible || function(){
   return true;
 };
-var FREEZE = !__webpack_require__(13)(function(){
+var FREEZE = !__webpack_require__(15)(function(){
   return isExtensible(Object.preventExtensions({}));
 });
 var setMeta = function(it){
@@ -13242,11 +14740,11 @@ var meta = module.exports = {
 /* 94 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var dP       = __webpack_require__(4)
-  , anObject = __webpack_require__(12)
-  , getKeys  = __webpack_require__(15);
+var dP       = __webpack_require__(5)
+  , anObject = __webpack_require__(14)
+  , getKeys  = __webpack_require__(17);
 
-module.exports = __webpack_require__(2) ? Object.defineProperties : function defineProperties(O, Properties){
+module.exports = __webpack_require__(3) ? Object.defineProperties : function defineProperties(O, Properties){
   anObject(O);
   var keys   = getKeys(Properties)
     , length = keys.length
@@ -13261,7 +14759,7 @@ module.exports = __webpack_require__(2) ? Object.defineProperties : function def
 /***/ (function(module, exports, __webpack_require__) {
 
 // fallback for IE11 buggy Object.getOwnPropertyNames with iframe and window
-var toIObject = __webpack_require__(5)
+var toIObject = __webpack_require__(6)
   , gOPN      = __webpack_require__(50).f
   , toString  = {}.toString;
 
@@ -13287,8 +14785,8 @@ module.exports.f = function getOwnPropertyNames(it){
 
 // Works with __proto__ only. Old v8 can't work with null proto objects.
 /* eslint-disable no-proto */
-var isObject = __webpack_require__(14)
-  , anObject = __webpack_require__(12);
+var isObject = __webpack_require__(16)
+  , anObject = __webpack_require__(14);
 var check = function(O, proto){
   anObject(O);
   if(!isObject(proto) && proto !== null)throw TypeError(proto + ": can't set as prototype!");
@@ -13365,7 +14863,7 @@ module.exports = function(it){
 var addToUnscopables = __webpack_require__(84)
   , step             = __webpack_require__(91)
   , Iterators        = __webpack_require__(29)
-  , toIObject        = __webpack_require__(5);
+  , toIObject        = __webpack_require__(6);
 
 // 22.1.3.4 Array.prototype.entries()
 // 22.1.3.13 Array.prototype.keys()
@@ -13400,7 +14898,7 @@ addToUnscopables('entries');
 /* 101 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var $export = __webpack_require__(8)
+var $export = __webpack_require__(9)
 // 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
 $export($export.S, 'Object', {create: __webpack_require__(31)});
 
@@ -13408,9 +14906,9 @@ $export($export.S, 'Object', {create: __webpack_require__(31)});
 /* 102 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var $export = __webpack_require__(8);
+var $export = __webpack_require__(9);
 // 19.1.2.4 / 15.2.3.6 Object.defineProperty(O, P, Attributes)
-$export($export.S + $export.F * !__webpack_require__(2), 'Object', {defineProperty: __webpack_require__(4).f});
+$export($export.S + $export.F * !__webpack_require__(3), 'Object', {defineProperty: __webpack_require__(5).f});
 
 /***/ }),
 /* 103 */
@@ -13432,7 +14930,7 @@ __webpack_require__(54)('getPrototypeOf', function(){
 
 // 19.1.2.14 Object.keys(O)
 var toObject = __webpack_require__(37)
-  , $keys    = __webpack_require__(15);
+  , $keys    = __webpack_require__(17);
 
 __webpack_require__(54)('keys', function(){
   return function keys(it){
@@ -13445,7 +14943,7 @@ __webpack_require__(54)('keys', function(){
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.3.19 Object.setPrototypeOf(O, proto)
-var $export = __webpack_require__(8);
+var $export = __webpack_require__(9);
 $export($export.S, 'Object', {setPrototypeOf: __webpack_require__(96).set});
 
 /***/ }),
@@ -13485,30 +14983,30 @@ __webpack_require__(48)(String, 'String', function(iterated){
 
 // ECMAScript 6 symbols shim
 var global         = __webpack_require__(1)
-  , has            = __webpack_require__(3)
-  , DESCRIPTORS    = __webpack_require__(2)
-  , $export        = __webpack_require__(8)
+  , has            = __webpack_require__(4)
+  , DESCRIPTORS    = __webpack_require__(3)
+  , $export        = __webpack_require__(9)
   , redefine       = __webpack_require__(55)
   , META           = __webpack_require__(93).KEY
-  , $fails         = __webpack_require__(13)
+  , $fails         = __webpack_require__(15)
   , shared         = __webpack_require__(35)
   , setToStringTag = __webpack_require__(33)
   , uid            = __webpack_require__(26)
-  , wks            = __webpack_require__(10)
+  , wks            = __webpack_require__(11)
   , wksExt         = __webpack_require__(40)
   , wksDefine      = __webpack_require__(39)
   , keyOf          = __webpack_require__(92)
   , enumKeys       = __webpack_require__(86)
   , isArray        = __webpack_require__(89)
-  , anObject       = __webpack_require__(12)
-  , toIObject      = __webpack_require__(5)
+  , anObject       = __webpack_require__(14)
+  , toIObject      = __webpack_require__(6)
   , toPrimitive    = __webpack_require__(38)
   , createDesc     = __webpack_require__(25)
   , _create        = __webpack_require__(31)
   , gOPNExt        = __webpack_require__(95)
   , $GOPD          = __webpack_require__(49)
-  , $DP            = __webpack_require__(4)
-  , $keys          = __webpack_require__(15)
+  , $DP            = __webpack_require__(5)
+  , $keys          = __webpack_require__(17)
   , gOPD           = $GOPD.f
   , dP             = $DP.f
   , gOPN           = gOPNExt.f
@@ -13710,7 +15208,7 @@ $JSON && $export($export.S + $export.F * (!USE_NATIVE || $fails(function(){
 });
 
 // 19.4.3.4 Symbol.prototype[@@toPrimitive](hint)
-$Symbol[PROTOTYPE][TO_PRIMITIVE] || __webpack_require__(9)($Symbol[PROTOTYPE], TO_PRIMITIVE, $Symbol[PROTOTYPE].valueOf);
+$Symbol[PROTOTYPE][TO_PRIMITIVE] || __webpack_require__(10)($Symbol[PROTOTYPE], TO_PRIMITIVE, $Symbol[PROTOTYPE].valueOf);
 // 19.4.3.5 Symbol.prototype[@@toStringTag]
 setToStringTag($Symbol, 'Symbol');
 // 20.2.1.9 Math[@@toStringTag]
@@ -13736,9 +15234,9 @@ __webpack_require__(39)('observable');
 
 __webpack_require__(100);
 var global        = __webpack_require__(1)
-  , hide          = __webpack_require__(9)
+  , hide          = __webpack_require__(10)
   , Iterators     = __webpack_require__(29)
-  , TO_STRING_TAG = __webpack_require__(10)('toStringTag');
+  , TO_STRING_TAG = __webpack_require__(11)('toStringTag');
 
 for(var collections = ['NodeList', 'DOMTokenList', 'MediaList', 'StyleSheetList', 'CSSRuleList'], i = 0; i < 5; i++){
   var NAME       = collections[i]

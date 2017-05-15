@@ -13,10 +13,13 @@ class Placement extends Entity {
 
     this.id = `placement-${placement.id}`;
     this.banners = placement.banners;
+    this.revenueType = placement.revenueType;
+    this.cpdPercent = placement.cpdPercent;
     this.pr = placement.pr;
     this.cpd = placement.cpd;
     this.cpm = placement.cpm;
     this.campaign = placement.campaign;
+    this.positionOnShare = placement.positionOnShare;
   }
 
   get PlacementArea() {
@@ -32,18 +35,42 @@ class Placement extends Entity {
   }
 
   filterBanner() {
-    return this.allBanners.filter(x => x.isRenderable());
+    let result = this.allBanners.filter(x => x.isRenderable());
+    const arrayKeyword = window.ZoneConnect.relativeKeyword.split(',').map(item => item.replace(' ', ''));
+    if (arrayKeyword.length > 0) {
+      const filterBannerWithKeyword = result.filter(banner => banner.keyword.split(',').map(item => item.replace(' ', '')).filter(item => arrayKeyword.indexOf(item) !== -1).length > 0);
+      if (filterBannerWithKeyword.length > 0) {
+        result = filterBannerWithKeyword;
+      }
+    }
+    if (result.length === 0) {
+      return this.allBanners;
+    }
+    return result;
   }
+
   /**
    * Get active banner by its weight
    * @returns {Banner}
    */
   activeBanner() {
-    if (this.filterBanner().length > 0) {
+    const allBanner = this.filterBanner();
+    if (allBanner.length > 0) {
+      const isExitsWeight = allBanner.reduce((acc, banner, index) => {
+        if (index === 0) {
+          return banner.weight > 0;
+        }
+        return acc && banner.weight > 0;
+      }, 0);
+      console.log('isExitsWeight', isExitsWeight);
+      if (!isExitsWeight) {
+        const weight = 100 / allBanner.length;
+        allBanner.reduce((acc, banner) => (banner.weight = weight), 0); // eslint-disable-line
+      }
       const randomNumber = Math.random() * 100;
-      const ratio = this.filterBanner().reduce((tmp, banner) => (tmp + banner.weight), 0) / 100;
+      const ratio = allBanner.reduce((tmp, banner) => (tmp + banner.weight), 0) / 100;
 
-      return this.filterBanner().reduce((range, banner) => {
+      return allBanner.reduce((range, banner) => {
         const nextRange = range + (banner.weight / ratio);
 
         if (typeof range === 'object') {
@@ -59,34 +86,18 @@ class Placement extends Entity {
     }
 
     // default banner here
-    // // console.log(`place none banner: ${this.id} `);
-    const randomNumber = Math.random() * 100;
-    const ratio = this.allBanners.reduce((tmp, banner) => (tmp + banner.weight) / 100, 0);
-
-    return this.allBanners.reduce((range, banner) => {
-      const nextRange = range + (banner.weight / ratio);
-
-      if (typeof range === 'object') {
-        return range;
-      }
-
-      if (randomNumber >= range && randomNumber < nextRange) {
-        return banner;
-      }
-
-      return nextRange;
-    }, 0);
+    return util.getDefaultBanner(this.width, this.height);
   }
 
   get AdsType() {
-    if (this.pr !== undefined && this.pr === 1) {
-      return 'pr';
-    }
-    if (this.cpd !== undefined && this.cpd === 1) {
-      return 'cpd';
-    }
-    if (this.cpm !== undefined && this.cpm === 1) {
-      return 'cpm';
+    if (this.revenueType !== undefined) {
+      if (this.revenueType === 'cpd') {
+        return {
+          revenueType: this.revenueType,
+          cpdPercent: this.cpdPercent === 0 ? (1 / 3) : this.cpdPercent,
+        };
+      }
+      return { revenueType: this.revenueType };
     }
     return '';
   }

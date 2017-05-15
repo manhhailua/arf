@@ -4,6 +4,7 @@
 
 import Entity from './Entity';
 import Placement from './Placement';
+import { util } from '../vendor';
 
 class Share extends Entity {
 
@@ -14,12 +15,31 @@ class Share extends Entity {
     this.placements = share.placements;
   }
 
+  get shareArea() {
+    return util.convertArea(this.height, this.width);
+  }
+
   /**
    * Get all placements from this share
    * @returns [Placement]
    */
   get allPlacements() {
-    return this.placements.map(placement => new Placement(placement));
+    const allPlace = this.placements.map(placement => new Placement(placement));
+
+    const isUsePlacePosition = allPlace.reduce((acc, item, index) => {
+      if (index === 0) {
+        return item.positionOnShare !== undefined && item.positionOnShare !== 0;
+      }
+      return acc && (item.positionOnShare !== undefined && item.positionOnShare !== 0);
+    }, 0);
+
+    console.log('isUsePlacePosition', isUsePlacePosition);
+    if (isUsePlacePosition) {
+      allPlace.sort((a, b) => a.positionOnShare - b.positionOnShare);
+      console.log('sort', allPlace);
+      return allPlace;
+    }
+    return allPlace;
   }
 
   /**
